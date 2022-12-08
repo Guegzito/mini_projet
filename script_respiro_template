@@ -1,0 +1,1602 @@
+rm(list = ls())
+
+library(ggplot2)
+
+#charger les jeux de données manuellement
+
+   ####################jeu de données AC980272###################
+        #####Sondes 16231267 et 11290627 de 17h37 à 20h40 #####
+
+#charger le jeu de données AC980272.csv
+jour_1 <- AC980272
+
+#passer de kelvin en celsius : -273.15 â REGLER
+#jour_1$Value2 <- (jour_1$Value2)-273.15
+
+#passage des données temporelle en posixct 
+jour_1$`Date/Time` <- as.POSIXct(jour_1$`Date/Time`, format = "%d.%m.%Y %H:%M:%S")
+
+#subset des données sur notre manip
+which(jour_1$`Date/Time` == "2022-12-05 17:37:42")
+which(jour_1$`Date/Time` == "2022-12-05 20:40:03")
+respiroJ1 <- jour_1[ 1117:1728 , ]
+
+#Subset des données par sondes 
+sonde_16231267 <- subset(respiroJ1, subset = respiroJ1$Additional == 'Sal = 35,0   SC-FDO 925   16231267   t90 = 30 s')
+sonde_11290627 <- subset(respiroJ1, subset = respiroJ1$Additional == 'Sal = 35,0   SC-FDO 925   11290627   t90 = 30 s')
+
+#subset des données par échantillon 
+#subset par échantillon ; A pour avant et P pour après
+
+                  #### ECHANTILLON 1 ####
+
+#1 commence à 17h37m42s et fini à 18h07m42s
+#1	17h37	16231267
+which(sonde_16231267$`Date/Time` == "2022-12-05 17:37:42")
+which(sonde_16231267$`Date/Time` == "2022-12-05 18:07:42")
+A_1 <- sonde_16231267[ 1:61 , ]
+
+#regression 
+ggplot(data = A_1) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value)) +
+  geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
+  xlab("Time") + ylab("mg O2.L^{-1}") 
+
+#reprendre ici !!!!! 
+par(mfrow = c(1,1))
+plot(A_1$`Date/Time`, A_1$Value)
+lm1 <- lm(A_1$Value ~ A_1$`Date/Time`, data = A_1)
+lm1
+
+par(mfrow=c(2,2))
+plot(lm1)
+par(mfrow = c(1,2))
+coef(lm1)
+
+plot(Value ~ `Date/Time`, data=A_1) # left plot
+abline(lm1) # line described by model parameters
+hist(residuals(lm1))
+shapiro.test(residuals(lm1))
+skewness(residuals(lm1))
+
+R_A_1 <- -1.456549e-04 #mg.O2.L-1 #par min?
+
+
+
+                  #### ECHANTILLON 4 ####
+
+#commence à 17h37m42s et fini à 18h07m42s
+#4	17h37	11290627
+which(sonde_11290627$`Date/Time` == "2022-12-05 17:37:42")
+which(sonde_11290627$`Date/Time` == "2022-12-05 18:07:42")
+A_4 <- sonde_11290627[ 1:61 , ]
+
+#regression 
+ggplot(data = A_4) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value)) +
+  geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
+  xlab("Time") + ylab("mg O2.L^{-1}") 
+
+par(mfrow = c(1,1))
+plot(A_4$`Date/Time`, A_4$Value)
+lm1 <- lm(A_4$Value ~ A_4$`Date/Time`, data = A_4)
+lm1
+
+par(mfrow=c(2,2))
+plot(lm1)
+par(mfrow = c(1,2))
+coef(lm1)
+
+plot(Value ~ `Date/Time`, data=A_4) # left plot
+abline(lm1) # line described by model parameters
+hist(residuals(lm1))
+shapiro.test(residuals(lm1))
+skewness(residuals(lm1))
+
+R_A_4 <- -2.395029e-04 #mg.O2.L-1 #par min?
+
+
+                  #### ECHANTILLON 7 ####
+
+#commence à 18h13m10s et fini à 18h43m10s
+#7	18h12	16231267
+which(sonde_16231267$`Date/Time` == "2022-12-05 18:13:10")
+which(sonde_16231267$`Date/Time` == "2022-12-05 18:43:10")
+A_7 <- sonde_16231267[ 62:122 , ]
+
+#regression 
+ggplot(data = A_7) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value)) +
+  geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
+  xlab("Time") + ylab("mg O2.L^{-1}") 
+
+#reprendre ici !!!!! 
+par(mfrow = c(1,1))
+plot(A_7$`Date/Time`, A_7$Value)
+lm1 <- lm(A_7$Value ~ A_7$`Date/Time`, data = A_7)
+lm1
+
+par(mfrow=c(2,2))
+plot(lm1)
+par(mfrow = c(1,2))
+coef(lm1)
+
+plot(Value ~ `Date/Time`, data=A_7) # left plot
+abline(lm1) # line described by model parameters
+hist(residuals(lm1))
+shapiro.test(residuals(lm1))
+skewness(residuals(lm1))
+
+R_A_7 <- -1.607262e-04 #mg.O2.L-1 #par min?
+
+
+                  #### ECHANTILLON 8 ####
+
+#commence à 18h13m10s et fini à 18h43m10s
+#8	18h12	11290627
+which(sonde_11290627$`Date/Time` == "2022-12-05 18:13:10")
+which(sonde_11290627$`Date/Time` == "2022-12-05 18:43:10")
+A_8 <- sonde_11290627[ 62:122 , ]
+
+#regression 
+ggplot(data = A_8) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value)) +
+  geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
+  xlab("Time") + ylab("mg O2.L^{-1}") 
+
+#reprendre ici !!!!! 
+par(mfrow = c(1,1))
+plot(A_8$`Date/Time`, A_8$Value)
+lm1 <- lm(A_8$Value ~ A_8$`Date/Time`, data = A_8)
+lm1
+
+par(mfrow=c(2,2))
+plot(lm1)
+par(mfrow = c(1,2))
+coef(lm1)
+
+plot(Value ~ `Date/Time`, data=A_8) # left plot
+abline(lm1) # line described by model parameters
+hist(residuals(lm1))
+shapiro.test(residuals(lm1))
+skewness(residuals(lm1))
+
+R_A_8 <- -1.164287e-04 #mg.O2.L-1 #par min?
+ 
+
+                  #### ECHANTILLON 9 # A revoir ####
+
+#commence à 19h29m12s et fini à 19h59m12s
+#9	19h29	11290627
+which(sonde_11290627$`Date/Time` == "2022-12-05 19:29:12")
+which(sonde_11290627$`Date/Time` == "2022-12-05 19:59:12")
+A_9 <- sonde_11290627[ 184:244 , ]
+
+#regression 
+ggplot(data = A_9) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value)) +
+  geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
+  xlab("Time") + ylab("mg O2.L^{-1}") 
+
+
+par(mfrow = c(1,1))
+plot(A_9$`Date/Time`, A_9$Value)
+lm1 <- lm(A_9$Value ~ A_9$`Date/Time`, data = A_9)
+lm1
+
+par(mfrow=c(2,2))
+plot(lm1)
+par(mfrow = c(1,2))
+coef(lm1)
+
+plot(Value ~ `Date/Time`, data=A_9) # left plot
+abline(lm1) # line described by model parameters
+hist(residuals(lm1))
+shapiro.test(residuals(lm1))
+skewness(residuals(lm1))
+
+#R_A_9 <- -1.607262e-04 #mg.O2.L-1 #par min?
+
+                  #### ECHANTILLON 10 # A revoir ####
+
+#commence à 19h29m12s et fini à 19h59m12s
+#10	19h29	16231267
+which(sonde_16231267$`Date/Time` == "2022-12-05 19:29:12")
+which(sonde_16231267$`Date/Time` == "2022-12-05 19:59:12")
+A_10 <- sonde_16231267[ 184:244 , ]
+
+#regression 
+ggplot(data = A_10) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value)) +
+  geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
+  xlab("Time") + ylab("mg O2.L^{-1}") 
+
+par(mfrow = c(1,1))
+plot(A_10$`Date/Time`, A_10$Value)
+lm1 <- lm(A_10$Value ~ A_10$`Date/Time`, data = A_10)
+lm1
+
+par(mfrow=c(2,2))
+plot(lm1)
+par(mfrow = c(1,2))
+coef(lm1)
+
+plot(Value ~ `Date/Time`, data=A_10) # left plot
+abline(lm1) # line described by model parameters
+hist(residuals(lm1))
+shapiro.test(residuals(lm1))
+skewness(residuals(lm1))
+
+#R_A_10 <- -1.607262e-04 #mg.O2.L-1 #par min?
+
+                  #### ECHANTILLON 14 ####
+
+
+#commence à 18h53m16s et fini à 19h23m16s
+#14	18h53	11290627
+which(sonde_11290627$`Date/Time` == "2022-12-05 18:53:16")
+which(sonde_11290627$`Date/Time` == "2022-12-05 19:23:16")
+A_14 <- sonde_11290627[ 123:183 , ]
+
+#regression 
+ggplot(data = A_14) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value)) +
+  geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
+  xlab("Time") + ylab("mg O2.L^{-1}") 
+
+par(mfrow = c(1,1))
+plot(A_14$`Date/Time`, A_14$Value)
+lm1 <- lm(A_14$Value ~ A_14$`Date/Time`, data = A_14)
+lm1
+
+par(mfrow=c(2,2))
+plot(lm1)
+par(mfrow = c(1,2))
+coef(lm1)
+
+plot(Value ~ `Date/Time`, data=A_14) # left plot
+abline(lm1) # line described by model parameters
+hist(residuals(lm1))
+shapiro.test(residuals(lm1))
+skewness(residuals(lm1))
+
+R_A_14 <- -3.418650e-04 #mg.O2.L-1 #par min?
+
+                  #### ECHANTILLON 15 ####
+
+#commence à 18h53m16s et fini à 19h23m16s
+#15	18h53	16231267
+which(sonde_16231267$`Date/Time` == "2022-12-05 18:53:16")
+which(sonde_16231267$`Date/Time` == "2022-12-05 19:23:16")
+A_15 <- sonde_16231267[ 123:183 , ]
+
+#regression 
+ggplot(data = A_15) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value)) +
+  geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
+  xlab("Time") + ylab("mg O2.L^{-1}") 
+
+#reprendre ici !!!!! 
+par(mfrow = c(1,1))
+plot(A_15$`Date/Time`, A_15$Value)
+lm1 <- lm(A_15$Value ~ A_15$`Date/Time`, data = A_15)
+lm1
+
+par(mfrow=c(2,2))
+plot(lm1)
+par(mfrow = c(1,2))
+coef(lm1)
+
+plot(Value ~ `Date/Time`, data=A_15) # left plot
+abline(lm1) # line described by model parameters
+hist(residuals(lm1))
+shapiro.test(residuals(lm1))
+skewness(residuals(lm1))
+
+#R_A_15 <- #mg.O2.L-1 #par min?
+
+                  #### ECHANTILLON 16 ####
+
+#commence à 20h09m27s et fini à 20h39m27s
+#16	20h09	11290627
+which(sonde_11290627$`Date/Time` == "2022-12-05 20:10:33")
+which(sonde_11290627$`Date/Time` == "2022-12-05 20:40:03")
+A_16 <- sonde_11290627[ 247:306 , ]
+
+#regression 
+ggplot(data = A_16) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value)) +
+  geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
+  xlab("Time") + ylab("mg O2.L^{-1}") 
+
+par(mfrow = c(1,1))
+plot(A_16$`Date/Time`, A_7$Value)
+lm1 <- lm(A_16$Value ~ A_16$`Date/Time`, data = A_16)
+lm1
+
+par(mfrow=c(2,2))
+plot(lm1)
+par(mfrow = c(1,2))
+coef(lm1)
+
+plot(Value ~ `Date/Time`, data=A_7) # left plot
+abline(lm1) # line described by model parameters
+hist(residuals(lm1))
+shapiro.test(residuals(lm1))
+skewness(residuals(lm1))
+
+R_A_16 <- -1.433546e-04 #mg.O2.L-1 #par min?
+
+                  #### ECHANTILLON 17 ####
+  
+#17	20h09	16231267
+which(sonde_16231267$`Date/Time` == "2022-12-05 20:10:33")
+which(sonde_16231267$`Date/Time` == "2022-12-05 20:40:03")
+A_17 <- sonde_16231267[ 247:306 , ]
+
+#regression 
+ggplot(data = A_17) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value)) +
+  geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
+  xlab("Time") + ylab("mg O2.L^{-1}") 
+
+par(mfrow = c(1,1))
+plot(A_17$`Date/Time`, A_17$Value)
+lm1 <- lm(A_17$Value ~ A_17$`Date/Time`, data = A_17)
+lm1
+
+par(mfrow=c(2,2))
+plot(lm1)
+par(mfrow = c(1,2))
+coef(lm1)
+
+plot(Value ~ `Date/Time`, data=A_17) # left plot
+abline(lm1) # line described by model parameters
+hist(residuals(lm1))
+shapiro.test(residuals(lm1))
+skewness(residuals(lm1))
+
+R_A_17 <- -5.882189e-04 #mg.O2.L-1 #par min?
+
+
+
+
+
+
+
+
+
+####################jeu de données AC064576###################
+  #####Sondes 11121625 et 11290627 et 22220451  #####
+
+#charger le jeu de données AC064576.csv
+jour_2 <- AC064576
+
+#passer de kelvin en celsius : -273.15 â REGLER
+#jour_1$Value2 <- (jour_1$Value2)-273.15
+
+#passage des données temporelle en posixct 
+jour_2$`Date/Time` <- as.POSIXct(jour_2$`Date/Time`, format = "%d.%m.%Y %H:%M:%S")
+
+#subset des données sur notre manip
+which(jour_2$`Date/Time` == "2009-08-01 02:44:32")
+which(jour_2$`Date/Time` == "2022-12-06 20:04:36")
+respiroJ2 <- jour_2[ 292:1331 , ]
+
+#Subset des données par sondes 
+sonde_11121625 <- subset(respiroJ2, subset = respiroJ2$Additional == 'Sal = 35,0   SC-FDO 925   11121625   t90 = 30 s')
+sonde_11290627 <- subset(respiroJ2, subset = respiroJ2$Additional == 'Sal = 35,0   SC-FDO 925   11290627   t90 = 30 s')
+sonde_22220451 <- subset(respiroJ2, subset = respiroJ2$Additional == 'Sal = 25,0   SC-FDO   22220451   t90 = 30 s')
+
+#subset des données par échantillon 
+#subset par échantillon ; A pour avant et P pour après
+
+                  #### ECHANTILLON A A ####
+
+#A_A commence à 15h55m..s et fini à 16h25m..s
+#A_A	15h55	11121625
+which(sonde_11121625$`Date/Time` == "2009-08-01 02:44:32")
+which(sonde_11121625$`Date/Time` == "2009-08-01 03:14:32")
+A_A <- sonde_11121625[ 1:61 , ]
+
+#regression 
+ggplot(data = A_A) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value)) +
+  geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
+  xlab("Time") + ylab("mg O2.L^{-1}") 
+
+#reprendre ici !!!!! 
+par(mfrow = c(1,1))
+plot(A_A$`Date/Time`, A_A$Value)
+lm1 <- lm(A_A$Value ~ A_A$`Date/Time`, data = A_A)
+lm1
+
+par(mfrow=c(2,2))
+plot(lm1)
+par(mfrow = c(1,2))
+coef(lm1)
+
+plot(Value ~ `Date/Time`, data=A_A) # left plot
+abline(lm1) # line described by model parameters
+hist(residuals(lm1))
+shapiro.test(residuals(lm1))
+skewness(residuals(lm1))
+
+R_A_A <- -8.799577e-05 #mg.O2.L-1 #par min?
+
+
+
+                  #### ECHANTILLON B A ####
+
+#commence à 15h55m..s et fini à 16h25m..s
+#B_A	15h55	22220451
+which(sonde_22220451$`Date/Time` == "2009-08-01 02:44:32")
+which(sonde_22220451$`Date/Time` == "2009-08-01 03:14:32")
+B_A <- sonde_22220451[ 1:61 , ]
+
+#regression 
+ggplot(data = B_A) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value)) +
+  geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
+  xlab("Time") + ylab("mg O2.L^{-1}") 
+
+par(mfrow = c(1,1))
+plot(B_A$`Date/Time`, B_A$Value)
+lm1 <- lm(B_A$Value ~ B_A$`Date/Time`, data = B_A)
+lm1
+
+par(mfrow=c(2,2))
+plot(lm1)
+par(mfrow = c(1,2))
+coef(lm1)
+
+plot(Value ~ `Date/Time`, data=A_4) # left plot
+abline(lm1) # line described by model parameters
+hist(residuals(lm1))
+shapiro.test(residuals(lm1))
+skewness(residuals(lm1))
+
+R_A_B <- -2.961396e-05 #mg.O2.L-1 #par min?
+
+
+                  #### ECHANTILLON G A revoir ####
+
+#reprendre ici chercher les bonnes heures 
+#commence à 18h18m..s et fini à 18h48m..s
+#G	18h18	11290627
+which(sonde_11290627$`Date/Time` == "2022-12-06 18:18:44")
+which(sonde_11290627$`Date/Time` == "2022-12-06 18:48:44")
+A_G <- sonde_11290627[ 123:183 , ]
+
+#regression 
+ggplot(data = A_G) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value)) +
+  geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
+  xlab("Time") + ylab("mg O2.L^{-1}") 
+
+ggplot(data = A_G) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value2)) +
+  xlab("Time") + ylab("mg O2.L^{-1}") 
+
+#reprendre ici !!!!! 
+par(mfrow = c(1,1))
+plot(A_G$`Date/Time`, A_G$Value)
+lm1 <- lm(A_G$Value ~ A_7$`Date/Time`, data = A_7)
+lm1
+
+par(mfrow=c(2,2))
+plot(lm1)
+par(mfrow = c(1,2))
+coef(lm1)
+
+plot(Value ~ `Date/Time`, data=A_7) # left plot
+abline(lm1) # line described by model parameters
+hist(residuals(lm1))
+shapiro.test(residuals(lm1))
+skewness(residuals(lm1))
+revoir
+#R_A_G <- -1.607262e-04 #mg.O2.L-1 #par min?
+
+
+                  #### ECHANTILLON J A ####
+
+#commence à 18h54m44s et fini à 19h25m22s
+#J 	18h54	11121625
+which(sonde_11121625$`Date/Time` == "2022-12-06 18:54:44")
+which(sonde_11121625$`Date/Time` == "2022-12-06 19:25:22")
+A_J <- sonde_11121625[ 245:306 , ]
+
+#regression 
+ggplot(data = A_J) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value)) +
+  geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
+  xlab("Time") + ylab("mg O2.L^{-1}") 
+
+ggplot(data = A_J) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value2)) +
+  xlab("Time") + ylab("Temp °C") 
+
+#reprendre ici !!!!! 
+par(mfrow = c(1,1))
+plot(A_J$`Date/Time`, A_J$Value)
+lm1 <- lm(A_J$Value ~ A_J$`Date/Time`, data = A_J)
+lm1
+
+par(mfrow=c(2,2))
+plot(lm1)
+par(mfrow = c(1,2))
+coef(lm1)
+
+plot(Value ~ `Date/Time`, data=A_J) # left plot
+abline(lm1) # line described by model parameters
+hist(residuals(lm1))
+shapiro.test(residuals(lm1))
+skewness(residuals(lm1))
+
+R_A_8 <- -1.164287e-04 #mg.O2.L-1 #par min?
+
+
+                  #### ECHANTILLON 2 P ####
+
+#2_P commence à 17h02m..s et fini à 17h32m..s
+#2_P	17h02	11290627
+which(sonde_11290627$`Date/Time` == "2022-12-06 17:02:39")
+which(sonde_11290627$`Date/Time` == "2022-12-06 17:32:39")
+P_2 <- sonde_11290627[ 1:61 , ]
+
+#regression 
+ggplot(data = P_2) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value)) +
+  geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
+  xlab("Time") + ylab("mg O2.L^{-1}") 
+
+#reprendre ici !!!!! 
+par(mfrow = c(1,1))
+plot(P_2$`Date/Time`, P_2$Value)
+lm1 <- lm(P_2$Value ~ P_2$`Date/Time`, data = P_2)
+lm1
+
+par(mfrow=c(2,2))
+plot(lm1)
+par(mfrow = c(1,2))
+coef(lm1)
+
+plot(Value ~ `Date/Time`, data=P_2) # left plot
+abline(lm1) # line described by model parameters
+hist(residuals(lm1))
+shapiro.test(residuals(lm1))
+skewness(residuals(lm1))
+
+#R_P_2 <- -1.456549e-04 #mg.O2.L-1 #par min?
+
+
+
+                  #### ECHANTILLON 3 P ####
+
+#3_P commence à 17h02m..s et fini à 17h32m..s
+#3_P	17h02	22220451
+which(sonde_22220451$`Date/Time` == "2022-12-06 17:02:39")
+which(sonde_22220451$`Date/Time` == "2022-12-06 17:32:39")
+P_3 <- sonde_22220451[ 62:122 , ]
+
+#regression 
+ggplot(data = P_3) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value)) +
+  geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
+  xlab("Time") + ylab("mg O2.L^{-1}") 
+
+par(mfrow = c(1,1))
+plot(P_3$`Date/Time`, P_3$Value)
+lm1 <- lm(P_3$Value ~ P_3$`Date/Time`, data = P_3)
+lm1
+
+par(mfrow=c(2,2))
+plot(lm1)
+par(mfrow = c(1,2))
+coef(lm1)
+
+plot(Value ~ `Date/Time`, data=P_3) # left plot
+abline(lm1) # line described by model parameters
+hist(residuals(lm1))
+shapiro.test(residuals(lm1))
+skewness(residuals(lm1))
+
+#R_P_3 <- -2.395029e-04 #mg.O2.L-1 #par min?
+
+
+                  #### ECHANTILLON 4 P ####
+
+#4_P commence à 17h02m..s et fini à 17h32m..s
+#4_P	17h02	11121625
+which(sonde_11121625$`Date/Time` == "2022-12-06 17:02:39")
+which(sonde_11121625$`Date/Time` == "2022-12-06 17:32:39")
+P_4 <- sonde_11121625[ 62:122 , ]
+
+#regression 
+ggplot(data = P_4) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value)) +
+  geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
+  xlab("Time") + ylab("mg O2.L^{-1}") 
+
+#reprendre ici !!!!! 
+par(mfrow = c(1,1))
+plot(P_4$`Date/Time`, P_4$Value)
+lm1 <- lm(P_4$Value ~ P_4$`Date/Time`, data = P_4)
+lm1
+
+par(mfrow=c(2,2))
+plot(lm1)
+par(mfrow = c(1,2))
+coef(lm1)
+
+plot(Value ~ `Date/Time`, data=P_4) # left plot
+abline(lm1) # line described by model parameters
+hist(residuals(lm1))
+shapiro.test(residuals(lm1))
+skewness(residuals(lm1))
+
+R_P_4 <- -1.607262e-04 #mg.O2.L-1 #par min?
+
+
+                  #### ECHANTILLON 5 P ####
+
+#commence à 17h42m..s et fini à 18h12m..s
+#5_P	18h12	11290627
+which(sonde_11290627$`Date/Time` == "2022-12-06 17:42:48")
+which(sonde_11290627$`Date/Time` == "2022-12-06 18:12:48")
+P_5 <- sonde_11290627[ 62:122 , ]
+
+#regression 
+ggplot(data = P_5) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value)) +
+  geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
+  xlab("Time") + ylab("mg O2.L^{-1}") 
+
+#reprendre ici !!!!! 
+par(mfrow = c(1,1))
+plot(P_5$`Date/Time`, P_5$Value)
+lm1 <- lm(P_5$Value ~ P_5$`Date/Time`, data = P_5)
+lm1
+
+par(mfrow=c(2,2))
+plot(lm1)
+par(mfrow = c(1,2))
+coef(lm1)
+
+plot(Value ~ `Date/Time`, data=P_5) # left plot
+abline(lm1) # line described by model parameters
+hist(residuals(lm1))
+shapiro.test(residuals(lm1))
+skewness(residuals(lm1))
+
+#R_P_5 <- -1.164287e-04 #mg.O2.L-1 #par min?
+
+
+                  #### ECHANTILLON 7 P ####
+
+#commence à 17h42m..s et fini à 18h12m..s
+#7_P	17h42	22220451
+which(sonde_22220451$`Date/Time` == "2022-12-06 17:42:48")
+which(sonde_22220451$`Date/Time` == "2022-12-06 18:12:48")
+P_7 <- sonde_22220451[ 123:183 , ]
+
+#regression 
+ggplot(data = P_7) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value)) +
+  geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
+  xlab("Time") + ylab("mg O2.L^{-1}") 
+
+
+par(mfrow = c(1,1))
+plot(P_7$`Date/Time`, P_7$Value)
+lm1 <- lm(P_7$Value ~ P_7$`Date/Time`, data = P_7)
+lm1
+
+par(mfrow=c(2,2))
+plot(lm1)
+par(mfrow = c(1,2))
+coef(lm1)
+
+plot(Value ~ `Date/Time`, data=P_7) # left plot
+abline(lm1) # line described by model parameters
+hist(residuals(lm1))
+shapiro.test(residuals(lm1))
+skewness(residuals(lm1))
+
+#R_P_7 <- -1.607262e-04 #mg.O2.L-1 #par min?
+
+                  #### ECHANTILLON 8 P ####
+
+#commence à 17h42m..s et fini à 18h12m..s
+#8_P	17h42	11121625
+which(sonde_11121625$`Date/Time` == "2022-12-06 17:42:48")
+which(sonde_11121625$`Date/Time` == "2022-12-06 18:12:48")
+P_8 <- sonde_11121625[ 123:183 , ]
+
+#regression 
+ggplot(data = P_8) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value)) +
+  geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
+  xlab("Time") + ylab("mg O2.L^{-1}") 
+
+par(mfrow = c(1,1))
+plot(P_8$`Date/Time`, P_8$Value)
+lm1 <- lm(P_8$Value ~ P_8$`Date/Time`, data = P_8)
+lm1
+
+par(mfrow=c(2,2))
+plot(lm1)
+par(mfrow = c(1,2))
+coef(lm1)
+
+plot(Value ~ `Date/Time`, data=P_8) # left plot
+abline(lm1) # line described by model parameters
+hist(residuals(lm1))
+shapiro.test(residuals(lm1))
+skewness(residuals(lm1))
+
+#R_P_8 <- -1.607262e-04 #mg.O2.L-1 #par min?
+
+                  #### ECHANTILLON 13 P ####
+
+
+#commence à 18h54m..s et fini à 19h24m..s
+#13_P	18h54	22220451
+which(sonde_22220451$`Date/Time` == "2022-12-06 18:54:44")
+which(sonde_22220451$`Date/Time` == "2022-12-06 19:25:22")
+P_13 <- sonde_22220451[ 245:306 , ]
+
+#regression 
+ggplot(data = P_13) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value)) +
+  geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
+  xlab("Time") + ylab("mg O2.L^{-1}") 
+
+par(mfrow = c(1,1))
+plot(P_13$`Date/Time`, P_13$Value)
+lm1 <- lm(P_13$Value ~ P_13$`Date/Time`, data = P_13)
+lm1
+
+par(mfrow=c(2,2))
+plot(lm1)
+par(mfrow = c(1,2))
+coef(lm1)
+
+plot(Value ~ `Date/Time`, data=P_13) # left plot
+abline(lm1) # line described by model parameters
+hist(residuals(lm1))
+shapiro.test(residuals(lm1))
+skewness(residuals(lm1))
+
+#R_P_13 <- -3.418650e-04 #mg.O2.L-1 #par min?
+
+                  #### ECHANTILLON 14 P ####
+
+
+#commence à 18h18m..s et fini à 18h48m..s
+#14_P	18h18	22220451
+which(sonde_22220451$`Date/Time` == "2022-12-06 18:18:44")
+which(sonde_22220451$`Date/Time` == "2022-12-06 18:48:44")
+P_14 <- sonde_22220451[ 184:244 , ]
+
+#regression 
+ggplot(data = P_14) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value)) +
+  geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
+  xlab("Time") + ylab("mg O2.L^{-1}") 
+
+par(mfrow = c(1,1))
+plot(P_14$`Date/Time`, P_14$Value)
+lm1 <- lm(P_14$Value ~ P_14$`Date/Time`, data = P_14)
+lm1
+
+par(mfrow=c(2,2))
+plot(lm1)
+par(mfrow = c(1,2))
+coef(lm1)
+
+plot(Value ~ `Date/Time`, data=P_14) # left plot
+abline(lm1) # line described by model parameters
+hist(residuals(lm1))
+shapiro.test(residuals(lm1))
+skewness(residuals(lm1))
+
+#R_P_14 <- -3.418650e-04 #mg.O2.L-1 #par min?
+
+                  #### ECHANTILLON 15 P ####
+
+#commence à 18h18m..s et fini à 18h48m..s
+#15_P	18h18	11121625
+which(sonde_11121625$`Date/Time` == "2022-12-06 18:18:44")
+which(sonde_11121625$`Date/Time` == "2022-12-06 18:48:44")
+P_15 <- sonde_11121625[ 184:244 , ]
+
+#regression 
+ggplot(data = P_15) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value)) +
+  geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
+  xlab("Time") + ylab("mg O2.L^{-1}") 
+
+#reprendre ici !!!!! 
+par(mfrow = c(1,1))
+plot(P_15$`Date/Time`, P_15$Value)
+lm1 <- lm(P_15$Value ~ P_15$`Date/Time`, data = P_15)
+lm1
+
+par(mfrow=c(2,2))
+plot(lm1)
+par(mfrow = c(1,2))
+coef(lm1)
+
+plot(Value ~ `Date/Time`, data=P_15) # left plot
+abline(lm1) # line described by model parameters
+hist(residuals(lm1))
+shapiro.test(residuals(lm1))
+skewness(residuals(lm1))
+
+#R_P_15 <- #mg.O2.L-1 #par min?
+
+                  #### ECHANTILLON 17 P ####
+
+#commence à 19h34m..s et fini à 20h04m..s
+#17_P	19h34	11290627
+which(sonde_11290627$`Date/Time` == "2022-12-06 19:34:36")
+which(sonde_11290627$`Date/Time` == "2022-12-06 20:04:36")
+P_17 <- sonde_11290627[ 246:306 , ]
+
+#regression 
+ggplot(data = P_17) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value)) +
+  geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
+  xlab("Time") + ylab("mg O2.L^{-1}") 
+
+par(mfrow = c(1,1))
+plot(P_17$`Date/Time`, P_17$Value)
+lm1 <- lm(P_17$Value ~ P_17$`Date/Time`, data = P_17)
+lm1
+
+par(mfrow=c(2,2))
+plot(lm1)
+par(mfrow = c(1,2))
+coef(lm1)
+
+plot(Value ~ `Date/Time`, data=P_17) # left plot
+abline(lm1) # line described by model parameters
+hist(residuals(lm1))
+shapiro.test(residuals(lm1))
+skewness(residuals(lm1))
+
+R_P_17 <- -1.433546e-04 #mg.O2.L-1 #par min?
+
+                  #### ECHANTILLON 18 P ####
+
+#commence à 19h34m..s et fini à 20h04m..s
+#18_P	19h34	11121625
+which(sonde_11121625$`Date/Time` == "2022-12-06 19:34:36")
+which(sonde_11121625$`Date/Time` == "2022-12-06 20:04:36")
+P_18 <- sonde_11121625[ 307:367 , ]
+
+#regression 
+ggplot(data = P_18) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value)) +
+  geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
+  xlab("Time") + ylab("mg O2.L^{-1}") 
+
+par(mfrow = c(1,1))
+plot(P_18$`Date/Time`, P_18$Value)
+lm1 <- lm(P_18$Value ~ P_18$`Date/Time`, data = P_18)
+lm1
+
+par(mfrow=c(2,2))
+plot(lm1)
+par(mfrow = c(1,2))
+coef(lm1)
+
+plot(Value ~ `Date/Time`, data=P_18) # left plot
+abline(lm1) # line described by model parameters
+hist(residuals(lm1))
+shapiro.test(residuals(lm1))
+skewness(residuals(lm1))
+
+R_P_18 <- -5.882189e-04 #mg.O2.L-1 #par min?
+
+
+
+
+
+
+
+
+
+
+                  #### ECHANTILLON 19 P ####
+
+#commence à 19h34m..s et fini à 20h04m..s
+#19_P	19h34	22220451
+which(sonde_22220451$`Date/Time` == "2022-12-06 19:34:36")
+which(sonde_22220451$`Date/Time` == "2022-12-06 20:04:36")
+P_19 <- sonde_22220451[ 307:367 , ]
+
+#regression 
+ggplot(data = P_19) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value)) +
+  geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
+  xlab("Time") + ylab("mg O2.L^{-1}") 
+
+par(mfrow = c(1,1))
+plot(P_19$`Date/Time`, P_19$Value)
+lm1 <- lm(P_19$Value ~ P_19$`Date/Time`, data = P_19)
+lm1
+
+par(mfrow=c(2,2))
+plot(lm1)
+par(mfrow = c(1,2))
+coef(lm1)
+
+plot(Value ~ `Date/Time`, data=P_19) # left plot
+abline(lm1) # line described by model parameters
+hist(residuals(lm1))
+shapiro.test(residuals(lm1))
+skewness(residuals(lm1))
+
+R_P_19 <- -1.433546e-04 #mg.O2.L-1 #par min?
+
+                  #### ECHANTILLON 20 P ####
+
+#commence à 18h54m..s et fini à 19h24m..s
+#20_P	18h54	11121625
+which(sonde_11121625$`Date/Time` == "2022-12-06 18:54:44")
+which(sonde_11121625$`Date/Time` == "2022-12-06 19:25:22")
+P_20 <- sonde_11121625[ 245:306 , ]
+
+#regression 
+ggplot(data = P_20) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value)) +
+  geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
+  xlab("Time") + ylab("mg O2.L^{-1}") 
+
+par(mfrow = c(1,1))
+plot(P_20$`Date/Time`, P_20$Value)
+lm1 <- lm(P_20$Value ~ P_20$`Date/Time`, data = P_20)
+lm1
+
+par(mfrow=c(2,2))
+plot(lm1)
+par(mfrow = c(1,2))
+coef(lm1)
+
+plot(Value ~ `Date/Time`, data=P_20) # left plot
+abline(lm1) # line described by model parameters
+hist(residuals(lm1))
+shapiro.test(residuals(lm1))
+skewness(residuals(lm1))
+
+R_P_20 <- -5.882189e-04 #mg.O2.L-1 #par min?
+
+
+
+
+
+
+
+
+
+
+
+####################jeu de données A9066502###################
+#####Sondes 16142185 et 16180104 et 16231267 et 88880000#####
+
+#charger le jeu de données AC064576.csv
+jour_3 <- A9066502
+
+#passer de kelvin en celsius : -273.15 â REGLER
+#jour_1$Value2 <- (jour_1$Value2)-273.15
+
+#passage des données temporelle en posixct 
+jour_3$`Date/Time` <- as.POSIXct(jour_3$`Date/Time`, format = "%d.%m.%Y %H:%M:%S")
+
+#subset des données sur notre manip
+which(jour_3$`Date/Time` == "2022-12-06 15:55:27")
+which(jour_3$`Date/Time` == "2022-12-06 20:38:01")
+respiroJ3 <- jour_3[ 8335:9439 , ]
+
+#Subset des données par sondes 
+sonde_16180104 <- subset(respiroJ3, subset = respiroJ3$Additional == 'Sal = 35.0   SC-FDO 925   16180104   t90 = 30 s')
+sonde_16142185 <- subset(respiroJ3, subset = respiroJ3$Additional == 'Sal = 35.0   SC-FDO 925   16142185   t90 = 30 s')
+sonde_16231267 <- subset(respiroJ3, subset = respiroJ3$Additional == 'Sal = 35.0   SC-FDO 925   16231267   t90 = 30 s')
+sonde_88880000 <- subset(respiroJ3, subset = respiroJ3$Additional == 'Sal = 35.0   SC-FDO 925   88880000   t90 = 30 s')
+
+#subset des données par échantillon 
+#subset par échantillon ; A pour avant et P pour après
+
+#### ECHANTILLON E A ####
+
+#E_A commence à 15h55m..s et fini à 16h25m..s
+#E_A	15h55	16180104
+which(sonde_16180104$`Date/Time` == "2022-12-06 15:55:27")
+which(sonde_16180104$`Date/Time` == "2022-12-06 16:25:27")
+A_E <- sonde_16180104[ 1:61 , ]
+
+#regression 
+ggplot(data = A_E) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value)) +
+  geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
+  xlab("Time") + ylab("mg O2.L^{-1}") 
+
+#reprendre ici !!!!! 
+par(mfrow = c(1,1))
+plot(A_E$`Date/Time`, A_E$Value)
+lm1 <- lm(A_E$Value ~ A_E$`Date/Time`, data = A_E)
+lm1
+
+par(mfrow=c(2,2))
+plot(lm1)
+par(mfrow = c(1,2))
+coef(lm1)
+
+plot(Value ~ `Date/Time`, data=A_E) # left plot
+abline(lm1) # line described by model parameters
+hist(residuals(lm1))
+shapiro.test(residuals(lm1))
+skewness(residuals(lm1))
+
+R_A_E <- -8.799577e-05 #mg.O2.L-1 #par min?
+
+
+
+#### ECHANTILLON C A ####
+
+#commence à 15h55m..s et fini à 16h25m..s
+#C_A	15h55	16142185
+which(sonde_16142185$`Date/Time` == "2022-12-06 15:55:27")
+which(sonde_16142185$`Date/Time` == "2022-12-06 16:25:27")
+A_C <- sonde_16142185[ 1:61 , ]
+
+#regression 
+ggplot(data = A_C) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value)) +
+  geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
+  xlab("Time") + ylab("mg O2.L^{-1}") 
+
+par(mfrow = c(1,1))
+plot(A_C$`Date/Time`, A_C$Value)
+lm1 <- lm(A_C$Value ~ A_C$`Date/Time`, data = A_C)
+lm1
+
+par(mfrow=c(2,2))
+plot(lm1)
+par(mfrow = c(1,2))
+coef(lm1)
+
+plot(Value ~ `Date/Time`, data=A_C) # left plot
+abline(lm1) # line described by model parameters
+hist(residuals(lm1))
+shapiro.test(residuals(lm1))
+skewness(residuals(lm1))
+
+R_A_C <- -2.961396e-05 #mg.O2.L-1 #par min?
+
+
+#### ECHANTILLON F A ####
+
+#reprendre ici chercher les bonnes heures 
+#commence à 15h55m..s et fini à 16h25m..s
+#G	15h55	16231267
+which(sonde_16231267$`Date/Time` == "2022-12-06 15:55:27")
+which(sonde_16231267$`Date/Time` == "2022-12-06 16:25:27")
+A_F <- sonde_16231267[ 1:61 , ]
+
+#regression 
+ggplot(data = A_F) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value)) +
+  geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
+  xlab("Time") + ylab("mg O2.L^{-1}") 
+
+ggplot(data = A_F) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value2)) +
+  xlab("Time") + ylab("mg O2.L^{-1}") 
+
+#reprendre ici !!!!! 
+par(mfrow = c(1,1))
+plot(A_F$`Date/Time`, A_F$Value)
+lm1 <- lm(A_F$Value ~ A_F$`Date/Time`, data = A_F)
+lm1
+
+par(mfrow=c(2,2))
+plot(lm1)
+par(mfrow = c(1,2))
+coef(lm1)
+
+plot(Value ~ `Date/Time`, data=A_F) # left plot
+abline(lm1) # line described by model parameters
+hist(residuals(lm1))
+shapiro.test(residuals(lm1))
+skewness(residuals(lm1))
+revoir
+#R_A_F <- -1.607262e-04 #mg.O2.L-1 #par min?
+
+
+#### ECHANTILLON D A ####
+
+#commence à 17h02m22s et fini à 17h32m22s
+#D 	17h02	16231267
+which(sonde_16231267$`Date/Time` == "2022-12-06 17:02:22")
+which(sonde_16231267$`Date/Time` == "2022-12-06 17:32:22")
+A_D <- sonde_16231267[ 62:122 , ]
+
+#regression 
+ggplot(data = A_D) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value)) +
+  geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
+  xlab("Time") + ylab("mg O2.L^{-1}") 
+
+ggplot(data = A_D) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value2)) +
+  xlab("Time") + ylab("Temp °C") 
+
+#reprendre ici !!!!! 
+par(mfrow = c(1,1))
+plot(A_D$`Date/Time`, A_D$Value)
+lm1 <- lm(A_D$Value ~ A_D$`Date/Time`, data = A_D)
+lm1
+
+par(mfrow=c(2,2))
+plot(lm1)
+par(mfrow = c(1,2))
+coef(lm1)
+
+plot(Value ~ `Date/Time`, data=A_D) # left plot
+abline(lm1) # line described by model parameters
+hist(residuals(lm1))
+shapiro.test(residuals(lm1))
+skewness(residuals(lm1))
+
+#R_A_D <- -1.164287e-04 #mg.O2.L-1 #par min?
+
+
+#### ECHANTILLON K A ####
+
+#commence à 17h02m22s et fini à 17h32m22s
+#D 	17h02	16180104
+which(sonde_16180104$`Date/Time` == "2022-12-06 17:02:22")
+which(sonde_16180104$`Date/Time` == "2022-12-06 17:32:22")
+A_K <- sonde_16180104[ 62:122 , ]
+
+#regression 
+ggplot(data = P_2) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value)) +
+  geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
+  xlab("Time") + ylab("mg O2.L^{-1}") 
+
+#reprendre ici !!!!! 
+par(mfrow = c(1,1))
+plot(P_2$`Date/Time`, P_2$Value)
+lm1 <- lm(P_2$Value ~ P_2$`Date/Time`, data = P_2)
+lm1
+
+par(mfrow=c(2,2))
+plot(lm1)
+par(mfrow = c(1,2))
+coef(lm1)
+
+plot(Value ~ `Date/Time`, data=P_2) # left plot
+abline(lm1) # line described by model parameters
+hist(residuals(lm1))
+shapiro.test(residuals(lm1))
+skewness(residuals(lm1))
+
+#R_P_2 <- -1.456549e-04 #mg.O2.L-1 #par min?
+
+
+
+#### ECHANTILLON 3 P ####
+
+#3_P commence à 17h02m..s et fini à 17h32m..s
+#3_P	17h02	22220451
+which(sonde_22220451$`Date/Time` == "2022-12-06 17:02:39")
+which(sonde_22220451$`Date/Time` == "2022-12-06 17:32:39")
+P_3 <- sonde_22220451[ 62:122 , ]
+
+#regression 
+ggplot(data = P_3) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value)) +
+  geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
+  xlab("Time") + ylab("mg O2.L^{-1}") 
+
+par(mfrow = c(1,1))
+plot(P_3$`Date/Time`, P_3$Value)
+lm1 <- lm(P_3$Value ~ P_3$`Date/Time`, data = P_3)
+lm1
+
+par(mfrow=c(2,2))
+plot(lm1)
+par(mfrow = c(1,2))
+coef(lm1)
+
+plot(Value ~ `Date/Time`, data=P_3) # left plot
+abline(lm1) # line described by model parameters
+hist(residuals(lm1))
+shapiro.test(residuals(lm1))
+skewness(residuals(lm1))
+
+#R_P_3 <- -2.395029e-04 #mg.O2.L-1 #par min?
+
+
+#### ECHANTILLON 4 P ####
+
+#4_P commence à 17h02m..s et fini à 17h32m..s
+#4_P	17h02	11121625
+which(sonde_11121625$`Date/Time` == "2022-12-06 17:02:39")
+which(sonde_11121625$`Date/Time` == "2022-12-06 17:32:39")
+P_4 <- sonde_11121625[ 62:122 , ]
+
+#regression 
+ggplot(data = P_4) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value)) +
+  geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
+  xlab("Time") + ylab("mg O2.L^{-1}") 
+
+#reprendre ici !!!!! 
+par(mfrow = c(1,1))
+plot(P_4$`Date/Time`, P_4$Value)
+lm1 <- lm(P_4$Value ~ P_4$`Date/Time`, data = P_4)
+lm1
+
+par(mfrow=c(2,2))
+plot(lm1)
+par(mfrow = c(1,2))
+coef(lm1)
+
+plot(Value ~ `Date/Time`, data=P_4) # left plot
+abline(lm1) # line described by model parameters
+hist(residuals(lm1))
+shapiro.test(residuals(lm1))
+skewness(residuals(lm1))
+
+R_A_E <- -1.607262e-04 #mg.O2.L-1 #par min?
+
+
+#### ECHANTILLON 5 P ####
+
+#commence à 17h42m..s et fini à 18h12m..s
+#5_P	18h12	11290627
+which(sonde_11290627$`Date/Time` == "2022-12-06 17:42:48")
+which(sonde_11290627$`Date/Time` == "2022-12-06 18:12:48")
+P_5 <- sonde_11290627[ 62:122 , ]
+
+#regression 
+ggplot(data = P_5) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value)) +
+  geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
+  xlab("Time") + ylab("mg O2.L^{-1}") 
+
+#reprendre ici !!!!! 
+par(mfrow = c(1,1))
+plot(P_5$`Date/Time`, P_5$Value)
+lm1 <- lm(P_5$Value ~ P_5$`Date/Time`, data = P_5)
+lm1
+
+par(mfrow=c(2,2))
+plot(lm1)
+par(mfrow = c(1,2))
+coef(lm1)
+
+plot(Value ~ `Date/Time`, data=P_5) # left plot
+abline(lm1) # line described by model parameters
+hist(residuals(lm1))
+shapiro.test(residuals(lm1))
+skewness(residuals(lm1))
+
+#R_P_5 <- -1.164287e-04 #mg.O2.L-1 #par min?
+
+
+#### ECHANTILLON 7 P ####
+
+#commence à 17h42m..s et fini à 18h12m..s
+#7_P	17h42	22220451
+which(sonde_22220451$`Date/Time` == "2022-12-06 17:42:48")
+which(sonde_22220451$`Date/Time` == "2022-12-06 18:12:48")
+P_7 <- sonde_22220451[ 123:183 , ]
+
+#regression 
+ggplot(data = P_7) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value)) +
+  geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
+  xlab("Time") + ylab("mg O2.L^{-1}") 
+
+
+par(mfrow = c(1,1))
+plot(P_7$`Date/Time`, P_7$Value)
+lm1 <- lm(P_7$Value ~ P_7$`Date/Time`, data = P_7)
+lm1
+
+par(mfrow=c(2,2))
+plot(lm1)
+par(mfrow = c(1,2))
+coef(lm1)
+
+plot(Value ~ `Date/Time`, data=P_7) # left plot
+abline(lm1) # line described by model parameters
+hist(residuals(lm1))
+shapiro.test(residuals(lm1))
+skewness(residuals(lm1))
+
+#R_P_7 <- -1.607262e-04 #mg.O2.L-1 #par min?
+
+#### ECHANTILLON 8 P ####
+
+#commence à 17h42m..s et fini à 18h12m..s
+#8_P	17h42	11121625
+which(sonde_11121625$`Date/Time` == "2022-12-06 17:42:48")
+which(sonde_11121625$`Date/Time` == "2022-12-06 18:12:48")
+P_8 <- sonde_11121625[ 123:183 , ]
+
+#regression 
+ggplot(data = P_8) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value)) +
+  geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
+  xlab("Time") + ylab("mg O2.L^{-1}") 
+
+par(mfrow = c(1,1))
+plot(P_8$`Date/Time`, P_8$Value)
+lm1 <- lm(P_8$Value ~ P_8$`Date/Time`, data = P_8)
+lm1
+
+par(mfrow=c(2,2))
+plot(lm1)
+par(mfrow = c(1,2))
+coef(lm1)
+
+plot(Value ~ `Date/Time`, data=P_8) # left plot
+abline(lm1) # line described by model parameters
+hist(residuals(lm1))
+shapiro.test(residuals(lm1))
+skewness(residuals(lm1))
+
+#R_P_8 <- -1.607262e-04 #mg.O2.L-1 #par min?
+
+#### ECHANTILLON 13 P ####
+
+
+#commence à 18h54m..s et fini à 19h24m..s
+#13_P	18h54	22220451
+which(sonde_22220451$`Date/Time` == "2022-12-06 18:54:44")
+which(sonde_22220451$`Date/Time` == "2022-12-06 19:25:22")
+P_13 <- sonde_22220451[ 245:306 , ]
+
+#regression 
+ggplot(data = P_13) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value)) +
+  geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
+  xlab("Time") + ylab("mg O2.L^{-1}") 
+
+par(mfrow = c(1,1))
+plot(P_13$`Date/Time`, P_13$Value)
+lm1 <- lm(P_13$Value ~ P_13$`Date/Time`, data = P_13)
+lm1
+
+par(mfrow=c(2,2))
+plot(lm1)
+par(mfrow = c(1,2))
+coef(lm1)
+
+plot(Value ~ `Date/Time`, data=P_13) # left plot
+abline(lm1) # line described by model parameters
+hist(residuals(lm1))
+shapiro.test(residuals(lm1))
+skewness(residuals(lm1))
+
+#R_P_13 <- -3.418650e-04 #mg.O2.L-1 #par min?
+
+#### ECHANTILLON 14 P ####
+
+
+#commence à 18h18m..s et fini à 18h48m..s
+#14_P	18h18	22220451
+which(sonde_22220451$`Date/Time` == "2022-12-06 18:18:44")
+which(sonde_22220451$`Date/Time` == "2022-12-06 18:48:44")
+P_14 <- sonde_22220451[ 184:244 , ]
+
+#regression 
+ggplot(data = P_14) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value)) +
+  geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
+  xlab("Time") + ylab("mg O2.L^{-1}") 
+
+par(mfrow = c(1,1))
+plot(P_14$`Date/Time`, P_14$Value)
+lm1 <- lm(P_14$Value ~ P_14$`Date/Time`, data = P_14)
+lm1
+
+par(mfrow=c(2,2))
+plot(lm1)
+par(mfrow = c(1,2))
+coef(lm1)
+
+plot(Value ~ `Date/Time`, data=P_14) # left plot
+abline(lm1) # line described by model parameters
+hist(residuals(lm1))
+shapiro.test(residuals(lm1))
+skewness(residuals(lm1))
+
+#R_P_14 <- -3.418650e-04 #mg.O2.L-1 #par min?
+
+#### ECHANTILLON 15 P ####
+
+#commence à 18h18m..s et fini à 18h48m..s
+#15_P	18h18	11121625
+which(sonde_11121625$`Date/Time` == "2022-12-06 18:18:44")
+which(sonde_11121625$`Date/Time` == "2022-12-06 18:48:44")
+P_15 <- sonde_11121625[ 184:244 , ]
+
+#regression 
+ggplot(data = P_15) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value)) +
+  geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
+  xlab("Time") + ylab("mg O2.L^{-1}") 
+
+#reprendre ici !!!!! 
+par(mfrow = c(1,1))
+plot(P_15$`Date/Time`, P_15$Value)
+lm1 <- lm(P_15$Value ~ P_15$`Date/Time`, data = P_15)
+lm1
+
+par(mfrow=c(2,2))
+plot(lm1)
+par(mfrow = c(1,2))
+coef(lm1)
+
+plot(Value ~ `Date/Time`, data=P_15) # left plot
+abline(lm1) # line described by model parameters
+hist(residuals(lm1))
+shapiro.test(residuals(lm1))
+skewness(residuals(lm1))
+
+#R_P_15 <- #mg.O2.L-1 #par min?
+
+#### ECHANTILLON 17 P ####
+
+#commence à 19h34m..s et fini à 20h04m..s
+#17_P	19h34	11290627
+which(sonde_11290627$`Date/Time` == "2022-12-06 19:34:36")
+which(sonde_11290627$`Date/Time` == "2022-12-06 20:04:36")
+P_17 <- sonde_11290627[ 246:306 , ]
+
+#regression 
+ggplot(data = P_17) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value)) +
+  geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
+  xlab("Time") + ylab("mg O2.L^{-1}") 
+
+par(mfrow = c(1,1))
+plot(P_17$`Date/Time`, P_17$Value)
+lm1 <- lm(P_17$Value ~ P_17$`Date/Time`, data = P_17)
+lm1
+
+par(mfrow=c(2,2))
+plot(lm1)
+par(mfrow = c(1,2))
+coef(lm1)
+
+plot(Value ~ `Date/Time`, data=P_17) # left plot
+abline(lm1) # line described by model parameters
+hist(residuals(lm1))
+shapiro.test(residuals(lm1))
+skewness(residuals(lm1))
+
+R_P_17 <- -1.433546e-04 #mg.O2.L-1 #par min?
+
+#### ECHANTILLON 18 P ####
+
+#commence à 19h34m..s et fini à 20h04m..s
+#18_P	19h34	11121625
+which(sonde_11121625$`Date/Time` == "2022-12-06 19:34:36")
+which(sonde_11121625$`Date/Time` == "2022-12-06 20:04:36")
+P_18 <- sonde_11121625[ 307:367 , ]
+
+#regression 
+ggplot(data = P_18) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value)) +
+  geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
+  xlab("Time") + ylab("mg O2.L^{-1}") 
+
+par(mfrow = c(1,1))
+plot(P_18$`Date/Time`, P_18$Value)
+lm1 <- lm(P_18$Value ~ P_18$`Date/Time`, data = P_18)
+lm1
+
+par(mfrow=c(2,2))
+plot(lm1)
+par(mfrow = c(1,2))
+coef(lm1)
+
+plot(Value ~ `Date/Time`, data=P_18) # left plot
+abline(lm1) # line described by model parameters
+hist(residuals(lm1))
+shapiro.test(residuals(lm1))
+skewness(residuals(lm1))
+
+R_P_18 <- -5.882189e-04 #mg.O2.L-1 #par min?
+
+
+
+
+
+
+
+
+
+
+#### ECHANTILLON 19 P ####
+
+#commence à 19h34m..s et fini à 20h04m..s
+#19_P	19h34	22220451
+which(sonde_22220451$`Date/Time` == "2022-12-06 19:34:36")
+which(sonde_22220451$`Date/Time` == "2022-12-06 20:04:36")
+P_19 <- sonde_22220451[ 307:367 , ]
+
+#regression 
+ggplot(data = P_19) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value)) +
+  geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
+  xlab("Time") + ylab("mg O2.L^{-1}") 
+
+par(mfrow = c(1,1))
+plot(P_19$`Date/Time`, P_19$Value)
+lm1 <- lm(P_19$Value ~ P_19$`Date/Time`, data = P_19)
+lm1
+
+par(mfrow=c(2,2))
+plot(lm1)
+par(mfrow = c(1,2))
+coef(lm1)
+
+plot(Value ~ `Date/Time`, data=P_19) # left plot
+abline(lm1) # line described by model parameters
+hist(residuals(lm1))
+shapiro.test(residuals(lm1))
+skewness(residuals(lm1))
+
+R_P_19 <- -1.433546e-04 #mg.O2.L-1 #par min?
+
+#### ECHANTILLON 20 P ####
+
+#commence à 18h54m..s et fini à 19h24m..s
+#20_P	18h54	11121625
+which(sonde_11121625$`Date/Time` == "2022-12-06 18:54:44")
+which(sonde_11121625$`Date/Time` == "2022-12-06 19:25:22")
+P_20 <- sonde_11121625[ 245:306 , ]
+
+#regression 
+ggplot(data = P_20) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value)) +
+  geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
+  xlab("Time") + ylab("mg O2.L^{-1}") 
+
+par(mfrow = c(1,1))
+plot(P_20$`Date/Time`, P_20$Value)
+lm1 <- lm(P_20$Value ~ P_20$`Date/Time`, data = P_20)
+lm1
+
+par(mfrow=c(2,2))
+plot(lm1)
+par(mfrow = c(1,2))
+coef(lm1)
+
+plot(Value ~ `Date/Time`, data=P_20) # left plot
+abline(lm1) # line described by model parameters
+hist(residuals(lm1))
+shapiro.test(residuals(lm1))
+skewness(residuals(lm1))
+
+R_P_20 <- -5.882189e-04 #mg.O2.L-1 #par min?
+
+
+
+
+
+
+
+
+
+
