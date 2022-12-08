@@ -28,7 +28,7 @@ sonde_11290627 <- subset(respiroJ1, subset = respiroJ1$Additional == 'Sal = 35,0
 #subset des données par échantillon 
 #subset par échantillon ; A pour avant et P pour après
 
-                  #### ECHANTILLON 1 ####
+                  #### ECHANTILLON 1 A ####
 
 #1 commence à 17h37m42s et fini à 18h07m42s
 #1	17h37	16231267
@@ -41,6 +41,14 @@ ggplot(data = A_1) +
   geom_point(mapping = aes(x = `Date/Time`, y = Value)) +
   geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
   xlab("Time") + ylab("mg O2.L^{-1}") 
+
+ggsave(filename = "A_1_O.png", width = 640/72, height = 450/72, dpi = 72)
+
+ggplot(data = A_1) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value2)) +
+  xlab("Time") + ylab("Temperature")
+
+ggsave(filename = "A_1_T.png", width = 640/72, height = 450/72, dpi = 72)
 
 #reprendre ici !!!!! 
 par(mfrow = c(1,1))
@@ -63,7 +71,7 @@ R_A_1 <- -1.456549e-04 #mg.O2.L-1 #par min?
 
 
 
-                  #### ECHANTILLON 4 ####
+                  #### ECHANTILLON 4 A ####
 
 #commence à 17h37m42s et fini à 18h07m42s
 #4	17h37	11290627
@@ -76,6 +84,14 @@ ggplot(data = A_4) +
   geom_point(mapping = aes(x = `Date/Time`, y = Value)) +
   geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
   xlab("Time") + ylab("mg O2.L^{-1}") 
+
+ggsave(filename = "A_4_O.png", width = 640/72, height = 450/72, dpi = 72)
+
+ggplot(data = A_4) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value2)) +
+  xlab("Time") + ylab("Temperature")
+
+ggsave(filename = "A_4_T.png", width = 640/72, height = 450/72, dpi = 72)
 
 par(mfrow = c(1,1))
 plot(A_4$`Date/Time`, A_4$Value)
@@ -96,7 +112,7 @@ skewness(residuals(lm1))
 R_A_4 <- -2.395029e-04 #mg.O2.L-1 #par min?
 
 
-                  #### ECHANTILLON 7 ####
+                  #### ECHANTILLON 7 A ####
 
 #commence à 18h13m10s et fini à 18h43m10s
 #7	18h12	16231267
@@ -109,6 +125,14 @@ ggplot(data = A_7) +
   geom_point(mapping = aes(x = `Date/Time`, y = Value)) +
   geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
   xlab("Time") + ylab("mg O2.L^{-1}") 
+
+ggsave(filename = "A_7_O.png", width = 640/72, height = 450/72, dpi = 72)
+
+ggplot(data = A_7) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value2)) +
+  xlab("Time") + ylab("Temperature")
+
+ggsave(filename = "A_7_T.png", width = 640/72, height = 450/72, dpi = 72)
 
 #reprendre ici !!!!! 
 par(mfrow = c(1,1))
@@ -130,7 +154,7 @@ skewness(residuals(lm1))
 R_A_7 <- -1.607262e-04 #mg.O2.L-1 #par min?
 
 
-                  #### ECHANTILLON 8 ####
+                  #### ECHANTILLON 8 A ####
 
 #commence à 18h13m10s et fini à 18h43m10s
 #8	18h12	11290627
@@ -143,6 +167,14 @@ ggplot(data = A_8) +
   geom_point(mapping = aes(x = `Date/Time`, y = Value)) +
   geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
   xlab("Time") + ylab("mg O2.L^{-1}") 
+
+ggsave(filename = "A_8_O.png", width = 640/72, height = 450/72, dpi = 72)
+
+ggplot(data = A_8) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value2)) +
+  xlab("Time") + ylab("Temperature")
+
+ggsave(filename = "A_8_T.png", width = 640/72, height = 450/72, dpi = 72)
 
 #reprendre ici !!!!! 
 par(mfrow = c(1,1))
@@ -164,7 +196,7 @@ skewness(residuals(lm1))
 R_A_8 <- -1.164287e-04 #mg.O2.L-1 #par min?
  
 
-                  #### ECHANTILLON 9 # A revoir ####
+                  #### ECHANTILLON 9 A # A revoir ####
 
 #commence à 19h29m12s et fini à 19h59m12s
 #9	19h29	11290627
@@ -177,6 +209,14 @@ ggplot(data = A_9) +
   geom_point(mapping = aes(x = `Date/Time`, y = Value)) +
   geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
   xlab("Time") + ylab("mg O2.L^{-1}") 
+
+ggsave(filename = "A_9_O.png", width = 640/72, height = 450/72, dpi = 72)
+
+ggplot(data = A_9) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value2)) +
+  xlab("Time") + ylab("Temperature")
+
+ggsave(filename = "A_9_T.png", width = 640/72, height = 450/72, dpi = 72)
 
 
 par(mfrow = c(1,1))
@@ -197,7 +237,7 @@ skewness(residuals(lm1))
 
 #R_A_9 <- -1.607262e-04 #mg.O2.L-1 #par min?
 
-                  #### ECHANTILLON 10 # A revoir ####
+                  #### ECHANTILLON 10 A # A revoir ####
 
 #commence à 19h29m12s et fini à 19h59m12s
 #10	19h29	16231267
@@ -210,6 +250,14 @@ ggplot(data = A_10) +
   geom_point(mapping = aes(x = `Date/Time`, y = Value)) +
   geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
   xlab("Time") + ylab("mg O2.L^{-1}") 
+
+ggsave(filename = "A_10_O.png", width = 640/72, height = 450/72, dpi = 72)
+
+ggplot(data = A_10) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value2)) +
+  xlab("Time") + ylab("Temperature")
+
+ggsave(filename = "A_10_T.png", width = 640/72, height = 450/72, dpi = 72)
 
 par(mfrow = c(1,1))
 plot(A_10$`Date/Time`, A_10$Value)
@@ -229,7 +277,7 @@ skewness(residuals(lm1))
 
 #R_A_10 <- -1.607262e-04 #mg.O2.L-1 #par min?
 
-                  #### ECHANTILLON 14 ####
+                  #### ECHANTILLON 14 A ####
 
 
 #commence à 18h53m16s et fini à 19h23m16s
@@ -243,6 +291,14 @@ ggplot(data = A_14) +
   geom_point(mapping = aes(x = `Date/Time`, y = Value)) +
   geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
   xlab("Time") + ylab("mg O2.L^{-1}") 
+
+ggsave(filename = "A_14_O.png", width = 640/72, height = 450/72, dpi = 72)
+
+ggplot(data = A_14) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value2)) +
+  xlab("Time") + ylab("Temperature")
+
+ggsave(filename = "A_14_T.png", width = 640/72, height = 450/72, dpi = 72)
 
 par(mfrow = c(1,1))
 plot(A_14$`Date/Time`, A_14$Value)
@@ -262,7 +318,7 @@ skewness(residuals(lm1))
 
 R_A_14 <- -3.418650e-04 #mg.O2.L-1 #par min?
 
-                  #### ECHANTILLON 15 ####
+                  #### ECHANTILLON 15 A ####
 
 #commence à 18h53m16s et fini à 19h23m16s
 #15	18h53	16231267
@@ -276,7 +332,14 @@ ggplot(data = A_15) +
   geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
   xlab("Time") + ylab("mg O2.L^{-1}") 
 
-#reprendre ici !!!!! 
+ggsave(filename = "A_15_O.png", width = 640/72, height = 450/72, dpi = 72)
+
+ggplot(data = A_15) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value2)) +
+  xlab("Time") + ylab("Temperature")
+
+ggsave(filename = "A_15_T.png", width = 640/72, height = 450/72, dpi = 72)
+
 par(mfrow = c(1,1))
 plot(A_15$`Date/Time`, A_15$Value)
 lm1 <- lm(A_15$Value ~ A_15$`Date/Time`, data = A_15)
@@ -295,7 +358,7 @@ skewness(residuals(lm1))
 
 #R_A_15 <- #mg.O2.L-1 #par min?
 
-                  #### ECHANTILLON 16 ####
+                  #### ECHANTILLON 16 A ####
 
 #commence à 20h09m27s et fini à 20h39m27s
 #16	20h09	11290627
@@ -308,6 +371,14 @@ ggplot(data = A_16) +
   geom_point(mapping = aes(x = `Date/Time`, y = Value)) +
   geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
   xlab("Time") + ylab("mg O2.L^{-1}") 
+
+ggsave(filename = "A_16_O.png", width = 640/72, height = 450/72, dpi = 72)
+
+ggplot(data = A_16) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value2)) +
+  xlab("Time") + ylab("Temperature")
+
+ggsave(filename = "A_16_T.png", width = 640/72, height = 450/72, dpi = 72)
 
 par(mfrow = c(1,1))
 plot(A_16$`Date/Time`, A_7$Value)
@@ -327,7 +398,7 @@ skewness(residuals(lm1))
 
 R_A_16 <- -1.433546e-04 #mg.O2.L-1 #par min?
 
-                  #### ECHANTILLON 17 ####
+                  #### ECHANTILLON 17 A ####
   
 #17	20h09	16231267
 which(sonde_16231267$`Date/Time` == "2022-12-05 20:10:33")
@@ -339,6 +410,14 @@ ggplot(data = A_17) +
   geom_point(mapping = aes(x = `Date/Time`, y = Value)) +
   geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
   xlab("Time") + ylab("mg O2.L^{-1}") 
+
+ggsave(filename = "A_17_O.png", width = 640/72, height = 450/72, dpi = 72)
+
+ggplot(data = A_17) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value2)) +
+  xlab("Time") + ylab("Temperature")
+
+ggsave(filename = "A_17_T.png", width = 640/72, height = 450/72, dpi = 72)
 
 par(mfrow = c(1,1))
 plot(A_17$`Date/Time`, A_17$Value)
@@ -405,6 +484,14 @@ ggplot(data = A_A) +
   geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
   xlab("Time") + ylab("mg O2.L^{-1}") 
 
+ggsave(filename = "A_A_O.png", width = 640/72, height = 450/72, dpi = 72)
+
+ggplot(data = A_A) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value2)) +
+  xlab("Time") + ylab("Temperature")
+
+ggsave(filename = "A_A_T.png", width = 640/72, height = 450/72, dpi = 72)
+
 #reprendre ici !!!!! 
 par(mfrow = c(1,1))
 plot(A_A$`Date/Time`, A_A$Value)
@@ -440,6 +527,14 @@ ggplot(data = B_A) +
   geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
   xlab("Time") + ylab("mg O2.L^{-1}") 
 
+ggsave(filename = "A_B_O.png", width = 640/72, height = 450/72, dpi = 72)
+
+ggplot(data = B_A) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value2)) +
+  xlab("Time") + ylab("Temperature")
+
+ggsave(filename = "A_B_T.png", width = 640/72, height = 450/72, dpi = 72)
+
 par(mfrow = c(1,1))
 plot(B_A$`Date/Time`, B_A$Value)
 lm1 <- lm(B_A$Value ~ B_A$`Date/Time`, data = B_A)
@@ -474,9 +569,15 @@ ggplot(data = A_G) +
   geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
   xlab("Time") + ylab("mg O2.L^{-1}") 
 
+ggsave(filename = "A_G_O.png", width = 640/72, height = 450/72, dpi = 72)
+
 ggplot(data = A_G) + 
   geom_point(mapping = aes(x = `Date/Time`, y = Value2)) +
-  xlab("Time") + ylab("mg O2.L^{-1}") 
+  xlab("Time") + ylab("Temperature")
+
+ggsave(filename = "A_G_T.png", width = 640/72, height = 450/72, dpi = 72)
+
+
 
 #reprendre ici !!!!! 
 par(mfrow = c(1,1))
@@ -512,9 +613,13 @@ ggplot(data = A_J) +
   geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
   xlab("Time") + ylab("mg O2.L^{-1}") 
 
+ggsave(filename = "A_J_O.png", width = 640/72, height = 450/72, dpi = 72)
+
 ggplot(data = A_J) + 
   geom_point(mapping = aes(x = `Date/Time`, y = Value2)) +
-  xlab("Time") + ylab("Temp °C") 
+  xlab("Time") + ylab("Temperature")
+
+ggsave(filename = "A_J_T.png", width = 640/72, height = 450/72, dpi = 72)
 
 #reprendre ici !!!!! 
 par(mfrow = c(1,1))
@@ -549,6 +654,14 @@ ggplot(data = P_2) +
   geom_point(mapping = aes(x = `Date/Time`, y = Value)) +
   geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
   xlab("Time") + ylab("mg O2.L^{-1}") 
+
+ggsave(filename = "P_2_O.png", width = 640/72, height = 450/72, dpi = 72)
+
+ggplot(data = P_2) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value2)) +
+  xlab("Time") + ylab("Temperature")
+
+ggsave(filename = "P_2_T.png", width = 640/72, height = 450/72, dpi = 72)
 
 #reprendre ici !!!!! 
 par(mfrow = c(1,1))
@@ -585,6 +698,14 @@ ggplot(data = P_3) +
   geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
   xlab("Time") + ylab("mg O2.L^{-1}") 
 
+ggsave(filename = "P_3_O.png", width = 640/72, height = 450/72, dpi = 72)
+
+ggplot(data = P_3) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value2)) +
+  xlab("Time") + ylab("Temperature")
+
+ggsave(filename = "P_3_T.png", width = 640/72, height = 450/72, dpi = 72)
+
 par(mfrow = c(1,1))
 plot(P_3$`Date/Time`, P_3$Value)
 lm1 <- lm(P_3$Value ~ P_3$`Date/Time`, data = P_3)
@@ -617,6 +738,14 @@ ggplot(data = P_4) +
   geom_point(mapping = aes(x = `Date/Time`, y = Value)) +
   geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
   xlab("Time") + ylab("mg O2.L^{-1}") 
+
+ggsave(filename = "P_4_O.png", width = 640/72, height = 450/72, dpi = 72)
+
+ggplot(data = P_4) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value2)) +
+  xlab("Time") + ylab("Temperature")
+
+ggsave(filename = "P_4_T.png", width = 640/72, height = 450/72, dpi = 72)
 
 #reprendre ici !!!!! 
 par(mfrow = c(1,1))
@@ -652,6 +781,14 @@ ggplot(data = P_5) +
   geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
   xlab("Time") + ylab("mg O2.L^{-1}") 
 
+ggsave(filename = "P_5_O.png", width = 640/72, height = 450/72, dpi = 72)
+
+ggplot(data = P_5) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value2)) +
+  xlab("Time") + ylab("Temperature")
+
+ggsave(filename = "P_5_T.png", width = 640/72, height = 450/72, dpi = 72)
+
 #reprendre ici !!!!! 
 par(mfrow = c(1,1))
 plot(P_5$`Date/Time`, P_5$Value)
@@ -686,6 +823,14 @@ ggplot(data = P_7) +
   geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
   xlab("Time") + ylab("mg O2.L^{-1}") 
 
+ggsave(filename = "P_7_O.png", width = 640/72, height = 450/72, dpi = 72)
+
+ggplot(data = P_7) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value2)) +
+  xlab("Time") + ylab("Temperature")
+
+ggsave(filename = "P_7_T.png", width = 640/72, height = 450/72, dpi = 72)
+
 
 par(mfrow = c(1,1))
 plot(P_7$`Date/Time`, P_7$Value)
@@ -718,6 +863,14 @@ ggplot(data = P_8) +
   geom_point(mapping = aes(x = `Date/Time`, y = Value)) +
   geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
   xlab("Time") + ylab("mg O2.L^{-1}") 
+
+ggsave(filename = "P_8_O.png", width = 640/72, height = 450/72, dpi = 72)
+
+ggplot(data = P_8) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value2)) +
+  xlab("Time") + ylab("Temperature")
+
+ggsave(filename = "P_8_T.png", width = 640/72, height = 450/72, dpi = 72)
 
 par(mfrow = c(1,1))
 plot(P_8$`Date/Time`, P_8$Value)
@@ -752,6 +905,14 @@ ggplot(data = P_13) +
   geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
   xlab("Time") + ylab("mg O2.L^{-1}") 
 
+ggsave(filename = "P_13_O.png", width = 640/72, height = 450/72, dpi = 72)
+
+ggplot(data = P_13) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value2)) +
+  xlab("Time") + ylab("Temperature")
+
+ggsave(filename = "P_13_T.png", width = 640/72, height = 450/72, dpi = 72)
+
 par(mfrow = c(1,1))
 plot(P_13$`Date/Time`, P_13$Value)
 lm1 <- lm(P_13$Value ~ P_13$`Date/Time`, data = P_13)
@@ -785,6 +946,14 @@ ggplot(data = P_14) +
   geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
   xlab("Time") + ylab("mg O2.L^{-1}") 
 
+ggsave(filename = "P_14_O.png", width = 640/72, height = 450/72, dpi = 72)
+
+ggplot(data = P_14) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value2)) +
+  xlab("Time") + ylab("Temperature")
+
+ggsave(filename = "P_14_T.png", width = 640/72, height = 450/72, dpi = 72)
+
 par(mfrow = c(1,1))
 plot(P_14$`Date/Time`, P_14$Value)
 lm1 <- lm(P_14$Value ~ P_14$`Date/Time`, data = P_14)
@@ -816,6 +985,14 @@ ggplot(data = P_15) +
   geom_point(mapping = aes(x = `Date/Time`, y = Value)) +
   geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
   xlab("Time") + ylab("mg O2.L^{-1}") 
+
+ggsave(filename = "P_15_O.png", width = 640/72, height = 450/72, dpi = 72)
+
+ggplot(data = P_15) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value2)) +
+  xlab("Time") + ylab("Temperature")
+
+ggsave(filename = "P_15_T.png", width = 640/72, height = 450/72, dpi = 72)
 
 #reprendre ici !!!!! 
 par(mfrow = c(1,1))
@@ -850,6 +1027,14 @@ ggplot(data = P_17) +
   geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
   xlab("Time") + ylab("mg O2.L^{-1}") 
 
+ggsave(filename = "P_17_O.png", width = 640/72, height = 450/72, dpi = 72)
+
+ggplot(data = P_17) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value2)) +
+  xlab("Time") + ylab("Temperature")
+
+ggsave(filename = "P_17_T.png", width = 640/72, height = 450/72, dpi = 72)
+
 par(mfrow = c(1,1))
 plot(P_17$`Date/Time`, P_17$Value)
 lm1 <- lm(P_17$Value ~ P_17$`Date/Time`, data = P_17)
@@ -881,6 +1066,14 @@ ggplot(data = P_18) +
   geom_point(mapping = aes(x = `Date/Time`, y = Value)) +
   geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
   xlab("Time") + ylab("mg O2.L^{-1}") 
+
+ggsave(filename = "P_18_O.png", width = 640/72, height = 450/72, dpi = 72)
+
+ggplot(data = P_18) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value2)) +
+  xlab("Time") + ylab("Temperature")
+
+ggsave(filename = "P_18_T.png", width = 640/72, height = 450/72, dpi = 72)
 
 par(mfrow = c(1,1))
 plot(P_18$`Date/Time`, P_18$Value)
@@ -923,6 +1116,14 @@ ggplot(data = P_19) +
   geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
   xlab("Time") + ylab("mg O2.L^{-1}") 
 
+ggsave(filename = "P_19_O.png", width = 640/72, height = 450/72, dpi = 72)
+
+ggplot(data = P_19) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value2)) +
+  xlab("Time") + ylab("Temperature")
+
+ggsave(filename = "P_19_T.png", width = 640/72, height = 450/72, dpi = 72)
+
 par(mfrow = c(1,1))
 plot(P_19$`Date/Time`, P_19$Value)
 lm1 <- lm(P_19$Value ~ P_19$`Date/Time`, data = P_19)
@@ -954,6 +1155,14 @@ ggplot(data = P_20) +
   geom_point(mapping = aes(x = `Date/Time`, y = Value)) +
   geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
   xlab("Time") + ylab("mg O2.L^{-1}") 
+
+ggsave(filename = "P_20_O.png", width = 640/72, height = 450/72, dpi = 72)
+
+ggplot(data = P_20) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value2)) +
+  xlab("Time") + ylab("Temperature")
+
+ggsave(filename = "P_20_T.png", width = 640/72, height = 450/72, dpi = 72)
 
 par(mfrow = c(1,1))
 plot(P_20$`Date/Time`, P_20$Value)
@@ -1023,6 +1232,14 @@ ggplot(data = A_E) +
   geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
   xlab("Time") + ylab("mg O2.L^{-1}") 
 
+ggsave(filename = "A_E_O.png", width = 640/72, height = 450/72, dpi = 72)
+
+ggplot(data = A_E) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value2)) +
+  xlab("Time") + ylab("Temperature")
+
+ggsave(filename = "A_E_T.png", width = 640/72, height = 450/72, dpi = 72)
+
 #reprendre ici !!!!! 
 par(mfrow = c(1,1))
 plot(A_E$`Date/Time`, A_E$Value)
@@ -1058,6 +1275,14 @@ ggplot(data = A_C) +
   geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
   xlab("Time") + ylab("mg O2.L^{-1}") 
 
+ggsave(filename = "A_C_O.png", width = 640/72, height = 450/72, dpi = 72)
+
+ggplot(data = A_C) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value2)) +
+  xlab("Time") + ylab("Temperature")
+
+ggsave(filename = "A_C_T.png", width = 640/72, height = 450/72, dpi = 72)
+
 par(mfrow = c(1,1))
 plot(A_C$`Date/Time`, A_C$Value)
 lm1 <- lm(A_C$Value ~ A_C$`Date/Time`, data = A_C)
@@ -1092,9 +1317,13 @@ ggplot(data = A_F) +
   geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
   xlab("Time") + ylab("mg O2.L^{-1}") 
 
+ggsave(filename = "A_F_O.png", width = 640/72, height = 450/72, dpi = 72)
+
 ggplot(data = A_F) + 
   geom_point(mapping = aes(x = `Date/Time`, y = Value2)) +
-  xlab("Time") + ylab("mg O2.L^{-1}") 
+  xlab("Time") + ylab("Temperature")
+
+ggsave(filename = "A_F_T.png", width = 640/72, height = 450/72, dpi = 72)
 
 #reprendre ici !!!!! 
 par(mfrow = c(1,1))
@@ -1130,9 +1359,13 @@ ggplot(data = A_D) +
   geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
   xlab("Time") + ylab("mg O2.L^{-1}") 
 
+ggsave(filename = "A_D_O.png", width = 640/72, height = 450/72, dpi = 72)
+
 ggplot(data = A_D) + 
   geom_point(mapping = aes(x = `Date/Time`, y = Value2)) +
-  xlab("Time") + ylab("Temp °C") 
+  xlab("Time") + ylab("Temperature")
+
+ggsave(filename = "A_D_T.png", width = 640/72, height = 450/72, dpi = 72)
 
 #reprendre ici !!!!! 
 par(mfrow = c(1,1))
@@ -1157,21 +1390,29 @@ skewness(residuals(lm1))
 #### ECHANTILLON K A ####
 
 #commence à 17h02m22s et fini à 17h32m22s
-#D 	17h02	16180104
+#K 	17h02	16180104
 which(sonde_16180104$`Date/Time` == "2022-12-06 17:02:22")
 which(sonde_16180104$`Date/Time` == "2022-12-06 17:32:22")
 A_K <- sonde_16180104[ 62:122 , ]
 
 #regression 
-ggplot(data = P_2) + 
+ggplot(data = A_K) + 
   geom_point(mapping = aes(x = `Date/Time`, y = Value)) +
   geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
   xlab("Time") + ylab("mg O2.L^{-1}") 
 
+ggsave(filename = "A_K_O.png", width = 640/72, height = 450/72, dpi = 72)
+
+ggplot(data = A_K) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value2)) +
+  xlab("Time") + ylab("Temperature")
+
+ggsave(filename = "A_K_T.png", width = 640/72, height = 450/72, dpi = 72)
+
 #reprendre ici !!!!! 
 par(mfrow = c(1,1))
-plot(P_2$`Date/Time`, P_2$Value)
-lm1 <- lm(P_2$Value ~ P_2$`Date/Time`, data = P_2)
+plot(A_K$`Date/Time`, A_K$Value)
+lm1 <- lm(A_K$Value ~ A_K$`Date/Time`, data = A_K)
 lm1
 
 par(mfrow=c(2,2))
@@ -1179,33 +1420,41 @@ plot(lm1)
 par(mfrow = c(1,2))
 coef(lm1)
 
-plot(Value ~ `Date/Time`, data=P_2) # left plot
+plot(Value ~ `Date/Time`, data=A_K) # left plot
 abline(lm1) # line described by model parameters
 hist(residuals(lm1))
 shapiro.test(residuals(lm1))
 skewness(residuals(lm1))
 
-#R_P_2 <- -1.456549e-04 #mg.O2.L-1 #par min?
+#R_A_K <- -1.456549e-04 #mg.O2.L-1 #par min?
 
 
 
-#### ECHANTILLON 3 P ####
+#### ECHANTILLON 1 P ####
 
-#3_P commence à 17h02m..s et fini à 17h32m..s
-#3_P	17h02	22220451
-which(sonde_22220451$`Date/Time` == "2022-12-06 17:02:39")
-which(sonde_22220451$`Date/Time` == "2022-12-06 17:32:39")
-P_3 <- sonde_22220451[ 62:122 , ]
+#1_P commence à 17h02m..s et fini à 17h32m..s
+#1_P	17h02	16142185
+which(sonde_16142185$`Date/Time` == "2022-12-06 17:02:22")
+which(sonde_16142185$`Date/Time` == "2022-12-06 17:32:22")
+P_1 <- sonde_16142185[ 62:122 , ]
 
 #regression 
-ggplot(data = P_3) + 
+ggplot(data = P_1) + 
   geom_point(mapping = aes(x = `Date/Time`, y = Value)) +
   geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
   xlab("Time") + ylab("mg O2.L^{-1}") 
 
+ggsave(filename = "P_1_O.png", width = 640/72, height = 450/72, dpi = 72)
+
+ggplot(data = P_1) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value2)) +
+  xlab("Time") + ylab("Temperature")
+
+ggsave(filename = "P_1_T.png", width = 640/72, height = 450/72, dpi = 72)
+
 par(mfrow = c(1,1))
-plot(P_3$`Date/Time`, P_3$Value)
-lm1 <- lm(P_3$Value ~ P_3$`Date/Time`, data = P_3)
+plot(P_1$`Date/Time`, P_1$Value)
+lm1 <- lm(P_1$Value ~ P_1$`Date/Time`, data = P_1)
 lm1
 
 par(mfrow=c(2,2))
@@ -1213,7 +1462,7 @@ plot(lm1)
 par(mfrow = c(1,2))
 coef(lm1)
 
-plot(Value ~ `Date/Time`, data=P_3) # left plot
+plot(Value ~ `Date/Time`, data=P_1) # left plot
 abline(lm1) # line described by model parameters
 hist(residuals(lm1))
 shapiro.test(residuals(lm1))
@@ -1222,24 +1471,32 @@ skewness(residuals(lm1))
 #R_P_3 <- -2.395029e-04 #mg.O2.L-1 #par min?
 
 
-#### ECHANTILLON 4 P ####
+#### ECHANTILLON H A ####
 
-#4_P commence à 17h02m..s et fini à 17h32m..s
-#4_P	17h02	11121625
-which(sonde_11121625$`Date/Time` == "2022-12-06 17:02:39")
-which(sonde_11121625$`Date/Time` == "2022-12-06 17:32:39")
-P_4 <- sonde_11121625[ 62:122 , ]
+#H_A commence à 17h42m31s et fini à 18h03m31s
+#H_A	17h42	16180104
+which(sonde_16180104$`Date/Time` == "2022-12-06 17:42:31")
+which(sonde_16180104$`Date/Time` == "2022-12-06 18:03:31")
+A_H <- sonde_16180104[ 123:165 , ]
 
 #regression 
-ggplot(data = P_4) + 
+ggplot(data = A_H) + 
   geom_point(mapping = aes(x = `Date/Time`, y = Value)) +
   geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
   xlab("Time") + ylab("mg O2.L^{-1}") 
+
+ggsave(filename = "A_H_O.png", width = 640/72, height = 450/72, dpi = 72)
+
+ggplot(data = A_H) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value2)) +
+  xlab("Time") + ylab("Temperature")
+
+ggsave(filename = "A_H_T.png", width = 640/72, height = 450/72, dpi = 72)
 
 #reprendre ici !!!!! 
 par(mfrow = c(1,1))
-plot(P_4$`Date/Time`, P_4$Value)
-lm1 <- lm(P_4$Value ~ P_4$`Date/Time`, data = P_4)
+plot(A_H$`Date/Time`, A_H$Value)
+lm1 <- lm(A_H$Value ~ A_H$`Date/Time`, data = A_H)
 lm1
 
 par(mfrow=c(2,2))
@@ -1247,33 +1504,41 @@ plot(lm1)
 par(mfrow = c(1,2))
 coef(lm1)
 
-plot(Value ~ `Date/Time`, data=P_4) # left plot
+plot(Value ~ `Date/Time`, data=A_H) # left plot
 abline(lm1) # line described by model parameters
 hist(residuals(lm1))
 shapiro.test(residuals(lm1))
 skewness(residuals(lm1))
 
-R_A_E <- -1.607262e-04 #mg.O2.L-1 #par min?
+R_A_H <- -1.607262e-04 #mg.O2.L-1 #par min?
 
 
-#### ECHANTILLON 5 P ####
+#### ECHANTILLON I A ####
 
-#commence à 17h42m..s et fini à 18h12m..s
-#5_P	18h12	11290627
-which(sonde_11290627$`Date/Time` == "2022-12-06 17:42:48")
-which(sonde_11290627$`Date/Time` == "2022-12-06 18:12:48")
-P_5 <- sonde_11290627[ 62:122 , ]
+#I_A commence à 17h42m31s et fini à 18h03m31s
+#I_A	17h42	16142185
+which(sonde_16142185$`Date/Time` == "2022-12-06 17:42:31")
+which(sonde_16142185$`Date/Time` == "2022-12-06 18:03:31")
+A_I <- sonde_16142185[ 123:165 , ]
 
 #regression 
-ggplot(data = P_5) + 
+ggplot(data = A_I) + 
   geom_point(mapping = aes(x = `Date/Time`, y = Value)) +
   geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
   xlab("Time") + ylab("mg O2.L^{-1}") 
+
+ggsave(filename = "A_I_O.png", width = 640/72, height = 450/72, dpi = 72)
+
+ggplot(data = A_I) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value2)) +
+  xlab("Time") + ylab("Temperature")
+
+ggsave(filename = "A_I_T.png", width = 640/72, height = 450/72, dpi = 72)
 
 #reprendre ici !!!!! 
 par(mfrow = c(1,1))
-plot(P_5$`Date/Time`, P_5$Value)
-lm1 <- lm(P_5$Value ~ P_5$`Date/Time`, data = P_5)
+plot(A_I$`Date/Time`, A_I$Value)
+lm1 <- lm(A_I$Value ~ A_I$`Date/Time`, data = A_I)
 lm1
 
 par(mfrow=c(2,2))
@@ -1281,33 +1546,41 @@ plot(lm1)
 par(mfrow = c(1,2))
 coef(lm1)
 
-plot(Value ~ `Date/Time`, data=P_5) # left plot
+plot(Value ~ `Date/Time`, data=A_I) # left plot
 abline(lm1) # line described by model parameters
 hist(residuals(lm1))
 shapiro.test(residuals(lm1))
 skewness(residuals(lm1))
 
-#R_P_5 <- -1.164287e-04 #mg.O2.L-1 #par min?
+#R_A_I <- -1.164287e-04 #mg.O2.L-1 #par min?
 
 
-#### ECHANTILLON 7 P ####
+#### ECHANTILLON 6 P ####
 
-#commence à 17h42m..s et fini à 18h12m..s
-#7_P	17h42	22220451
-which(sonde_22220451$`Date/Time` == "2022-12-06 17:42:48")
-which(sonde_22220451$`Date/Time` == "2022-12-06 18:12:48")
-P_7 <- sonde_22220451[ 123:183 , ]
+#6_P commence à 17h42m31s et fini à 18h03m31s
+#6_P	17h42	16231267
+which(sonde_16231267$`Date/Time` == "2022-12-06 17:42:31")
+which(sonde_16231267$`Date/Time` == "2022-12-06 18:03:31")
+P_6 <- sonde_16231267[ 123:165 , ]
 
 #regression 
-ggplot(data = P_7) + 
+ggplot(data = P_6) + 
   geom_point(mapping = aes(x = `Date/Time`, y = Value)) +
   geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
   xlab("Time") + ylab("mg O2.L^{-1}") 
 
+ggsave(filename = "P_6_O.png", width = 640/72, height = 450/72, dpi = 72)
+
+ggplot(data = P_6) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value2)) +
+  xlab("Time") + ylab("Temperature")
+
+ggsave(filename = "P_6_T.png", width = 640/72, height = 450/72, dpi = 72)
+
 
 par(mfrow = c(1,1))
-plot(P_7$`Date/Time`, P_7$Value)
-lm1 <- lm(P_7$Value ~ P_7$`Date/Time`, data = P_7)
+plot(P_6$`Date/Time`, P_6$Value)
+lm1 <- lm(P_6$Value ~ P_6$`Date/Time`, data = P_6)
 lm1
 
 par(mfrow=c(2,2))
@@ -1315,31 +1588,39 @@ plot(lm1)
 par(mfrow = c(1,2))
 coef(lm1)
 
-plot(Value ~ `Date/Time`, data=P_7) # left plot
+plot(Value ~ `Date/Time`, data=P_6) # left plot
 abline(lm1) # line described by model parameters
 hist(residuals(lm1))
 shapiro.test(residuals(lm1))
 skewness(residuals(lm1))
 
-#R_P_7 <- -1.607262e-04 #mg.O2.L-1 #par min?
+#R_P_6 <- -1.607262e-04 #mg.O2.L-1 #par min?
 
-#### ECHANTILLON 8 P ####
+#### ECHANTILLON 11 P ####
 
-#commence à 17h42m..s et fini à 18h12m..s
-#8_P	17h42	11121625
-which(sonde_11121625$`Date/Time` == "2022-12-06 17:42:48")
-which(sonde_11121625$`Date/Time` == "2022-12-06 18:12:48")
-P_8 <- sonde_11121625[ 123:183 , ]
+#commence à 18h18m27s et fini à 18h48m27s
+#11_P	18h18	16231267
+which(sonde_16231267$`Date/Time` == "2022-12-06 18:18:27")
+which(sonde_16231267$`Date/Time` == "2022-12-06 18:48:27")
+P_11 <- sonde_16231267[ 166:226 , ]
 
 #regression 
-ggplot(data = P_8) + 
+ggplot(data = P_11) + 
   geom_point(mapping = aes(x = `Date/Time`, y = Value)) +
   geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
   xlab("Time") + ylab("mg O2.L^{-1}") 
 
+ggsave(filename = "P_11_O.png", width = 640/72, height = 450/72, dpi = 72)
+
+ggplot(data = P_11) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value2)) +
+  xlab("Time") + ylab("Temperature")
+
+ggsave(filename = "P_11_T.png", width = 640/72, height = 450/72, dpi = 72)
+
 par(mfrow = c(1,1))
-plot(P_8$`Date/Time`, P_8$Value)
-lm1 <- lm(P_8$Value ~ P_8$`Date/Time`, data = P_8)
+plot(P_11$`Date/Time`, P_11$Value)
+lm1 <- lm(P_11$Value ~ P_11$`Date/Time`, data = P_11)
 lm1
 
 par(mfrow=c(2,2))
@@ -1347,32 +1628,40 @@ plot(lm1)
 par(mfrow = c(1,2))
 coef(lm1)
 
-plot(Value ~ `Date/Time`, data=P_8) # left plot
+plot(Value ~ `Date/Time`, data=P_11) # left plot
 abline(lm1) # line described by model parameters
 hist(residuals(lm1))
 shapiro.test(residuals(lm1))
 skewness(residuals(lm1))
 
-#R_P_8 <- -1.607262e-04 #mg.O2.L-1 #par min?
+#R_P_11 <- -1.607262e-04 #mg.O2.L-1 #par min?
 
-#### ECHANTILLON 13 P ####
+#### ECHANTILLON 12 P ####
 
 
-#commence à 18h54m..s et fini à 19h24m..s
-#13_P	18h54	22220451
-which(sonde_22220451$`Date/Time` == "2022-12-06 18:54:44")
-which(sonde_22220451$`Date/Time` == "2022-12-06 19:25:22")
-P_13 <- sonde_22220451[ 245:306 , ]
+#commence à 18h18m27s et fini à 18h48m27s
+#11_P	18h18	16180104
+which(sonde_16180104$`Date/Time` == "2022-12-06 18:18:27")
+which(sonde_16180104$`Date/Time` == "2022-12-06 18:48:27")
+P_12 <- sonde_16180104[ 166:226 , ]
 
 #regression 
-ggplot(data = P_13) + 
+ggplot(data = P_12) + 
   geom_point(mapping = aes(x = `Date/Time`, y = Value)) +
   geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
   xlab("Time") + ylab("mg O2.L^{-1}") 
 
+ggsave(filename = "P_12_O.png", width = 640/72, height = 450/72, dpi = 72)
+
+ggplot(data = P_12) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value2)) +
+  xlab("Time") + ylab("Temperature")
+
+ggsave(filename = "P_12_T.png", width = 640/72, height = 450/72, dpi = 72)
+
 par(mfrow = c(1,1))
-plot(P_13$`Date/Time`, P_13$Value)
-lm1 <- lm(P_13$Value ~ P_13$`Date/Time`, data = P_13)
+plot(P_12$`Date/Time`, P_12$Value)
+lm1 <- lm(P_12$Value ~ P_12$`Date/Time`, data = P_12)
 lm1
 
 par(mfrow=c(2,2))
@@ -1380,32 +1669,39 @@ plot(lm1)
 par(mfrow = c(1,2))
 coef(lm1)
 
-plot(Value ~ `Date/Time`, data=P_13) # left plot
+plot(Value ~ `Date/Time`, data=P_12) # left plot
 abline(lm1) # line described by model parameters
 hist(residuals(lm1))
 shapiro.test(residuals(lm1))
 skewness(residuals(lm1))
 
-#R_P_13 <- -3.418650e-04 #mg.O2.L-1 #par min?
+#R_P_12 <- -3.418650e-04 #mg.O2.L-1 #par min?
 
-#### ECHANTILLON 14 P ####
-
+#### ECHANTILLON L A ####
 
 #commence à 18h18m..s et fini à 18h48m..s
-#14_P	18h18	22220451
-which(sonde_22220451$`Date/Time` == "2022-12-06 18:18:44")
-which(sonde_22220451$`Date/Time` == "2022-12-06 18:48:44")
-P_14 <- sonde_22220451[ 184:244 , ]
+#L_A 18h18	88880000
+which(sonde_88880000$`Date/Time` == "2022-12-06 18:18:27")
+which(sonde_88880000$`Date/Time` == "2022-12-06 18:48:27")
+A_L <- sonde_88880000[ 1:61 , ]
 
 #regression 
-ggplot(data = P_14) + 
+ggplot(data = A_L) + 
   geom_point(mapping = aes(x = `Date/Time`, y = Value)) +
   geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
   xlab("Time") + ylab("mg O2.L^{-1}") 
 
+ggsave(filename = "A_L_O.png", width = 640/72, height = 450/72, dpi = 72)
+
+ggplot(data = A_L) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value2)) +
+  xlab("Time") + ylab("Temperature")
+
+ggsave(filename = "A_L_T.png", width = 640/72, height = 450/72, dpi = 72)
+
 par(mfrow = c(1,1))
-plot(P_14$`Date/Time`, P_14$Value)
-lm1 <- lm(P_14$Value ~ P_14$`Date/Time`, data = P_14)
+plot(A_L$`Date/Time`, A_L$Value)
+lm1 <- lm(A_L$Value ~ A_L$`Date/Time`, data = A_L)
 lm1
 
 par(mfrow=c(2,2))
@@ -1413,32 +1709,40 @@ plot(lm1)
 par(mfrow = c(1,2))
 coef(lm1)
 
-plot(Value ~ `Date/Time`, data=P_14) # left plot
+plot(Value ~ `Date/Time`, data=A_L) # left plot
 abline(lm1) # line described by model parameters
 hist(residuals(lm1))
 shapiro.test(residuals(lm1))
 skewness(residuals(lm1))
 
-#R_P_14 <- -3.418650e-04 #mg.O2.L-1 #par min?
+#R_A_L <- -3.418650e-04 #mg.O2.L-1 #par min?
 
-#### ECHANTILLON 15 P ####
+#### ECHANTILLON M A ####
 
-#commence à 18h18m..s et fini à 18h48m..s
-#15_P	18h18	11121625
-which(sonde_11121625$`Date/Time` == "2022-12-06 18:18:44")
-which(sonde_11121625$`Date/Time` == "2022-12-06 18:48:44")
-P_15 <- sonde_11121625[ 184:244 , ]
+#commence à 18h54m32s et fini à 19h24m32s
+#15_P	18h54	16180104
+which(sonde_16180104$`Date/Time` == "2022-12-06 18:54:32")
+which(sonde_16180104$`Date/Time` == "2022-12-06 19:24:32")
+A_M <- sonde_16180104[ 227:287 , ]
 
 #regression 
-ggplot(data = P_15) + 
+ggplot(data = A_M) + 
   geom_point(mapping = aes(x = `Date/Time`, y = Value)) +
   geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
   xlab("Time") + ylab("mg O2.L^{-1}") 
+
+ggsave(filename = "A_M_O.png", width = 640/72, height = 450/72, dpi = 72)
+
+ggplot(data = A_M) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value2)) +
+  xlab("Time") + ylab("Temperature")
+
+ggsave(filename = "A_M_T.png", width = 640/72, height = 450/72, dpi = 72)
 
 #reprendre ici !!!!! 
 par(mfrow = c(1,1))
-plot(P_15$`Date/Time`, P_15$Value)
-lm1 <- lm(P_15$Value ~ P_15$`Date/Time`, data = P_15)
+plot(A_M$`Date/Time`, A_M$Value)
+lm1 <- lm(A_M$Value ~ A_M$`Date/Time`, data = A_M)
 lm1
 
 par(mfrow=c(2,2))
@@ -1446,31 +1750,39 @@ plot(lm1)
 par(mfrow = c(1,2))
 coef(lm1)
 
-plot(Value ~ `Date/Time`, data=P_15) # left plot
+plot(Value ~ `Date/Time`, data=A_M) # left plot
 abline(lm1) # line described by model parameters
 hist(residuals(lm1))
 shapiro.test(residuals(lm1))
 skewness(residuals(lm1))
 
-#R_P_15 <- #mg.O2.L-1 #par min?
+#R_A_M <- #mg.O2.L-1 #par min?
 
-#### ECHANTILLON 17 P ####
+#### ECHANTILLON 9 P ####
 
-#commence à 19h34m..s et fini à 20h04m..s
-#17_P	19h34	11290627
-which(sonde_11290627$`Date/Time` == "2022-12-06 19:34:36")
-which(sonde_11290627$`Date/Time` == "2022-12-06 20:04:36")
-P_17 <- sonde_11290627[ 246:306 , ]
+#commence à 18h54m32s et fini à 19h24m32s
+#9_P	18h54	88880000
+which(sonde_88880000$`Date/Time` == "2022-12-06 18:54:32")
+which(sonde_88880000$`Date/Time` == "2022-12-06 19:24:32")
+P_9 <- sonde_88880000[ 62:122 , ]
 
 #regression 
-ggplot(data = P_17) + 
+ggplot(data = P_9) + 
   geom_point(mapping = aes(x = `Date/Time`, y = Value)) +
   geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
   xlab("Time") + ylab("mg O2.L^{-1}") 
 
+ggsave(filename = "P_9_O.png", width = 640/72, height = 450/72, dpi = 72)
+
+ggplot(data = P_9) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value2)) +
+  xlab("Time") + ylab("Temperature")
+
+ggsave(filename = "P_9_T.png", width = 640/72, height = 450/72, dpi = 72)
+
 par(mfrow = c(1,1))
-plot(P_17$`Date/Time`, P_17$Value)
-lm1 <- lm(P_17$Value ~ P_17$`Date/Time`, data = P_17)
+plot(P_9$`Date/Time`, P_9$Value)
+lm1 <- lm(P_9$Value ~ P_9$`Date/Time`, data = P_9)
 lm1
 
 par(mfrow=c(2,2))
@@ -1478,31 +1790,39 @@ plot(lm1)
 par(mfrow = c(1,2))
 coef(lm1)
 
-plot(Value ~ `Date/Time`, data=P_17) # left plot
+plot(Value ~ `Date/Time`, data=P_9) # left plot
 abline(lm1) # line described by model parameters
 hist(residuals(lm1))
 shapiro.test(residuals(lm1))
 skewness(residuals(lm1))
 
-R_P_17 <- -1.433546e-04 #mg.O2.L-1 #par min?
+R_P_9 <- -1.433546e-04 #mg.O2.L-1 #par min?
 
-#### ECHANTILLON 18 P ####
+#### ECHANTILLON 10 P ####
 
-#commence à 19h34m..s et fini à 20h04m..s
-#18_P	19h34	11121625
-which(sonde_11121625$`Date/Time` == "2022-12-06 19:34:36")
-which(sonde_11121625$`Date/Time` == "2022-12-06 20:04:36")
-P_18 <- sonde_11121625[ 307:367 , ]
+#commence à 18h54m32s et fini à 19h24m32s
+#10_P	19h34	16231267 
+which(sonde_16231267$`Date/Time` == "2022-12-06 18:54:32")
+which(sonde_16231267$`Date/Time` == "2022-12-06 19:24:32")
+P_10 <- sonde_16231267[ 227:287 , ]
 
 #regression 
-ggplot(data = P_18) + 
+ggplot(data = P_10) + 
   geom_point(mapping = aes(x = `Date/Time`, y = Value)) +
   geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
   xlab("Time") + ylab("mg O2.L^{-1}") 
 
+ggsave(filename = "P_10_O.png", width = 640/72, height = 450/72, dpi = 72)
+
+ggplot(data = P_10) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value2)) +
+  xlab("Time") + ylab("Temperature")
+
+ggsave(filename = "P_10_T.png", width = 640/72, height = 450/72, dpi = 72)
+
 par(mfrow = c(1,1))
-plot(P_18$`Date/Time`, P_18$Value)
-lm1 <- lm(P_18$Value ~ P_18$`Date/Time`, data = P_18)
+plot(P_10$`Date/Time`, P_10$Value)
+lm1 <- lm(P_10$Value ~ P_10$`Date/Time`, data = P_10)
 lm1
 
 par(mfrow=c(2,2))
@@ -1510,13 +1830,13 @@ plot(lm1)
 par(mfrow = c(1,2))
 coef(lm1)
 
-plot(Value ~ `Date/Time`, data=P_18) # left plot
+plot(Value ~ `Date/Time`, data=P_10) # left plot
 abline(lm1) # line described by model parameters
 hist(residuals(lm1))
 shapiro.test(residuals(lm1))
 skewness(residuals(lm1))
 
-R_P_18 <- -5.882189e-04 #mg.O2.L-1 #par min?
+R_P_10 <- -5.882189e-04 #mg.O2.L-1 #par min?
 
 
 
@@ -1527,16 +1847,16 @@ R_P_18 <- -5.882189e-04 #mg.O2.L-1 #par min?
 
 
 
-#### ECHANTILLON 19 P ####
+#### ECHANTILLON ???? N'existe pas dans le document ####
 
-#commence à 19h34m..s et fini à 20h04m..s
-#19_P	19h34	22220451
-which(sonde_22220451$`Date/Time` == "2022-12-06 19:34:36")
-which(sonde_22220451$`Date/Time` == "2022-12-06 20:04:36")
-P_19 <- sonde_22220451[ 307:367 , ]
+#commence à 19h34m19s et fini à 20h04m19s
+#?_P	19h34	16142185
+which(sonde_16142185$`Date/Time` == "2022-12-06 19:34:19")
+which(sonde_16142185$`Date/Time` == "2022-12-06 20:04:19")
+P_OP <- sonde_16142185[ 166:226 , ]
 
 #regression 
-ggplot(data = P_19) + 
+ggplot(data = P_OP) + 
   geom_point(mapping = aes(x = `Date/Time`, y = Value)) +
   geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
   xlab("Time") + ylab("mg O2.L^{-1}") 
@@ -1559,19 +1879,27 @@ skewness(residuals(lm1))
 
 R_P_19 <- -1.433546e-04 #mg.O2.L-1 #par min?
 
-#### ECHANTILLON 20 P ####
+#### ECHANTILLON 16 P ####
 
-#commence à 18h54m..s et fini à 19h24m..s
-#20_P	18h54	11121625
-which(sonde_11121625$`Date/Time` == "2022-12-06 18:54:44")
-which(sonde_11121625$`Date/Time` == "2022-12-06 19:25:22")
-P_20 <- sonde_11121625[ 245:306 , ]
+#commence à 19h34m19s et fini à 20h04m19s
+#16_P	19h34	16180104
+which(sonde_16180104$`Date/Time` == "2022-12-06 19:34:19")
+which(sonde_16180104$`Date/Time` == "2022-12-06 20:04:19")
+P_16 <- sonde_16180104[ 288:348 , ]
 
 #regression 
-ggplot(data = P_20) + 
+ggplot(data = P_16) + 
   geom_point(mapping = aes(x = `Date/Time`, y = Value)) +
   geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
   xlab("Time") + ylab("mg O2.L^{-1}") 
+
+ggsave(filename = "P_16_O.png", width = 640/72, height = 450/72, dpi = 72)
+
+ggplot(data = P_16) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value2)) +
+  xlab("Time") + ylab("Temperature")
+
+ggsave(filename = "P_16_T.png", width = 640/72, height = 450/72, dpi = 72)
 
 par(mfrow = c(1,1))
 plot(P_20$`Date/Time`, P_20$Value)
@@ -1590,6 +1918,96 @@ shapiro.test(residuals(lm1))
 skewness(residuals(lm1))
 
 R_P_20 <- -5.882189e-04 #mg.O2.L-1 #par min?
+
+
+
+
+
+
+
+
+
+
+
+#### ECHANTILLON 18 A ?????????????? ####
+
+#commence à 20h08ms01 et fini à 20h38m01s
+#18_A	20h08	16142185
+which(sonde_16142185$`Date/Time` == "2022-12-06 20:08:01")
+which(sonde_16142185$`Date/Time` == "2022-12-06 20:38:01")
+A_18 <- sonde_16142185[ 227:287 , ]
+
+#regression 
+ggplot(data = A_18) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value)) +
+  geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
+  xlab("Time") + ylab("mg O2.L^{-1}") 
+
+ggsave(filename = "A_18_O.png", width = 640/72, height = 450/72, dpi = 72)
+
+ggplot(data = A_18) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value2)) +
+  xlab("Time") + ylab("Temperature")
+
+ggsave(filename = "A_18_T.png", width = 640/72, height = 450/72, dpi = 72)
+
+par(mfrow = c(1,1))
+plot(A_18$`Date/Time`, A_18$Value)
+lm1 <- lm(A_18$Value ~ A_18$`Date/Time`, data = A_18)
+lm1
+
+par(mfrow=c(2,2))
+plot(lm1)
+par(mfrow = c(1,2))
+coef(lm1)
+
+plot(Value ~ `Date/Time`, data=A_18) # left plot
+abline(lm1) # line described by model parameters
+hist(residuals(lm1))
+shapiro.test(residuals(lm1))
+skewness(residuals(lm1))
+
+R_A_18 <- -1.433546e-04 #mg.O2.L-1 #par min?
+
+#### ECHANTILLON 19 A ?????????????? ####
+
+#commence à 20h08ms01 et fini à 20h38m01s
+#19_A	20h08	16180104
+which(sonde_16180104$`Date/Time` == "2022-12-06 20:08:01")
+which(sonde_16180104$`Date/Time` == "2022-12-06 20:38:01")
+A_19 <- sonde_16180104[ 349:409 , ]
+
+#regression 
+ggplot(data = A_19) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value)) +
+  geom_smooth(mapping = aes(x = `Date/Time`, y = Value)) +
+  xlab("Time") + ylab("mg O2.L^{-1}") 
+
+ggsave(filename = "A_19_O.png", width = 640/72, height = 450/72, dpi = 72)
+
+ggplot(data = A_19) + 
+  geom_point(mapping = aes(x = `Date/Time`, y = Value2)) +
+  xlab("Time") + ylab("Temperature")
+
+ggsave(filename = "A_19_T.png", width = 640/72, height = 450/72, dpi = 72)
+
+par(mfrow = c(1,1))
+plot(A_19$`Date/Time`, A_19$Value)
+lm1 <- lm(A_19$Value ~ A_19$`Date/Time`, data = A_19)
+lm1
+
+par(mfrow=c(2,2))
+plot(lm1)
+par(mfrow = c(1,2))
+coef(lm1)
+
+plot(Value ~ `Date/Time`, data=A_19) # left plot
+abline(lm1) # line described by model parameters
+hist(residuals(lm1))
+shapiro.test(residuals(lm1))
+skewness(residuals(lm1))
+
+R_A_20 <- -5.882189e-04 #mg.O2.L-1 #par min?
 
 
 
